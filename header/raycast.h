@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/25 16:47:09 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/25 18:05:46 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ typedef struct s_game
 	t_img		*texture;
 	t_data		*drawing;
 	t_player	*player;
-
-	double		*time; //프레임이 나오는 데 걸린 시간(초)
 }	t_game;
 
 void	raycast(t_game *game);

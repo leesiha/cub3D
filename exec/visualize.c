@@ -6,12 +6,11 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:51:00 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/25 17:18:18 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/25 18:05:51 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
-#include <sys/time.h> //gettimeofday 허용함수 아님!!
 
 void	init_mlx(t_mlx *x)
 {
@@ -57,14 +56,6 @@ void	init_draw(t_game *game, t_data *draw)
 	draw->addr = mlx_get_data_addr(draw->img, &draw->bits_per_pixel, &draw->size_line, &draw->endian);
 }
 
-double	get_time(void)
-{
-	struct timeval time;
-
-	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
-
 int	key_hook(int keycode, t_game *game)
 {
 	t_player *player;
@@ -75,19 +66,10 @@ int	key_hook(int keycode, t_game *game)
 
 	double frame_time; // frameTime은 현재 프레임이 나오는 데 걸린 시간(초)입니다.
 	double move_speed, rotate_speed;
-	double oldtime; // 현재 및 이전 프레임의 시간을 저장. 둘의 시간차는 특정키를 눌렀을 때 (프레임 계산하는데 얼마나 걸리건 일정한 속도로 움직이기 위해) 이동거리를 결정하고, FPS를 측정하는데 사용할 것입니다.
 
-	// FPS 출력 !!이해해야함
-	// 레이캐스팅 loop를 마친 후, 현재 프레임과 이전 프레임의 시간을 계산합니다.
-	// 이 시간은 특정 키를 눌렀을 때 (프레임 계산하는데 얼마나 걸리건 일정한 속도로 움직이기 위해) 이동거리를 결정하고, FPS를 측정하는데 사용할 것입니다.
-	oldtime = *(game->time);
-	*(game->time) = get_time();
-	frame_time = (*(game->time) - oldtime) / 1000.0; //frame_time은 초 단위입니다.
-	printf("frame time: %f\n", frame_time);
-	// print(1.0 / frame_time, 0, 0); //FPS 출력
-
-	move_speed = frame_time * 3.0;	 // the constant value is in squares/second
-	rotate_speed = frame_time * 1.0; // the constant value is in radians/second
+	frame_time = 0.03; // 프레임 시간을 고정합니다. 이렇게 하면 이동 속도가 프레임 속도에 의해 결정됩니다.
+	move_speed = frame_time * 6.0;	 // the constant value is in squares/second
+	rotate_speed = frame_time * 2.0; // the constant value is in radians/second
 
 	if (keycode == ESC)
 	{
@@ -153,7 +135,6 @@ void	visualize(t_map *map_info)
 	// t_img		texture;
 	t_player	player;
 	t_game		game;
-	double		time;
 
 	game.map_info = map_info;
 	init_mlx(&mlx);
@@ -162,8 +143,6 @@ void	visualize(t_map *map_info)
 	// game.texture = &texture;
 	init_player(&game, &player);
 	game.player = &player;
-	time = 0;
-	game.time = &time;
 
 	mlx_hook(mlx.win, 2, 0, key_hook, &game);
 	mlx_loop_hook(mlx.p, render_map, &game);
