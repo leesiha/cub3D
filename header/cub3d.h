@@ -6,7 +6,7 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/25 17:19:00 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:04:54 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void	parse(t_game_info *game, char *full_name);
 void	parse_game_info_creat(t_game_info *game, char **converted_str);
 void	game_image_creat(t_game_info *game, char **converted_str);
 void	game_map_creat(t_map_info *map_data, char **converted_str);
-
+int		value_idx_find(char *str, int idx);
 
 #endif

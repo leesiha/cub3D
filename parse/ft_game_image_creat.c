@@ -6,7 +6,7 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:49:05 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/25 17:35:50 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:58:17 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@ void	last_space_remove(char *str)
 	while (str[end_idx] == ' ' && end_idx >= 0)
 		end_idx--;
 	str[end_idx + 1] = '\0';
-}
-
-int	value_idx_find(char *str, int idx)
-{
-	while (str[idx] != ' ')
-		idx++;
-	while (str[idx] == ' ' || str[idx] == ',')
-		idx++;
-	return (idx);
 }
 
 void	image_texture_creat(t_texture_info *texture, char *texture_str)
@@ -85,20 +76,16 @@ void	game_image_creat(t_game_info *game, char **converted_str)
 	{
 		col = 0;
 		last_space_remove(converted_str[row]);
-		while (converted_str[row][col] != '\0')
-		{
-			while (converted_str[row][col] == ' ')
-				col++;
-			if (converted_str[row][col] == 'S' || \
-				converted_str[row][col] == 'N' || \
-				converted_str[row][col] == 'W' || \
-				converted_str[row][col] == 'E')
-				image_texture_creat(&game->texture, converted_str[row] + col);
-			else if (converted_str[row][col] == 'F' || \
-					converted_str[row][col] == 'C')
-				image_fc_creat(&game->fc, converted_str[row] + col);
+		while (converted_str[row][col] == ' ')
 			col++;
-		}
+		if (converted_str[row][col] == 'S' || \
+			converted_str[row][col] == 'N' || \
+			converted_str[row][col] == 'W' || \
+			converted_str[row][col] == 'E')
+			image_texture_creat(&game->texture, converted_str[row] + col);
+		else if (converted_str[row][col] == 'F' || \
+				converted_str[row][col] == 'C')
+			image_fc_creat(&game->fc, converted_str[row] + col);
 		row++;
 	}
 }
