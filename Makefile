@@ -1,4 +1,4 @@
-NAME		= cub3D
+NAME		= cub3d
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
@@ -10,17 +10,18 @@ INCLUDES_HEADER  = -I$(LIBFT_DIR) -I header
 LINKS_LIBRARY    = -L$(LIBFT_DIR) -lft
 
 LIBFT_DIR		 = ./libft
-CUB3D		 = cub3D.a
+CUB3D		 = cub3d.a
 
-SRCS		= cub3D.c \
-				utils/all_utils.c \
+SRCS		= cub3d.c \
+				exec/raycast.c \
+				exec/visualize.c \
 
 OBJS        = $(SRCS:.c=.o)
 
 all: pre_make $(NAME)
 
 $(NAME): $(CUB3D)
-	$(CC) $(CFLAGS) $(LINKS_LIBRARY) $^ -o $@ -g
+	$(CC) $(CFLAGS) $(LINKS_LIBRARY) -lmlx -framework OpenGL -framework AppKit -fsanitize=address $^ -o $@
 
 $(CUB3D): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
