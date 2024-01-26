@@ -83,7 +83,7 @@ void raycast(t_game *game)
 				int_pos_y += step_y;
 				side = 1;
 			}
-			
+
 			if (game->map_info->map[int_pos_x][int_pos_y] > 0) // Check if ray has hit a wall
 				hit = 1;
 		}
@@ -96,7 +96,7 @@ void raycast(t_game *game)
 			perp_wall_dist = (int_pos_x - player->pos_x + (1 - step_x) / 2) / ray_xv;
 		else
 			perp_wall_dist = (int_pos_y - player->pos_y + (1 - step_y) / 2) / ray_yv;
-		
+
 		// 내가 구한 광선 길이에 비례하여 세울 벽 높이 결정
 		wall_height = (int)(screenHeight / perp_wall_dist);
 		// 벽 그릴 픽셀 범위 지정

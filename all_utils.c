@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/26 14:55:18 by taehkim2         ###   ########.fr       */
+/*   Created: 2024/01/22 16:34:33 by taehkim2          #+#    #+#             */
+/*   Updated: 2024/01/22 16:37:47 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include <stdlib.h>
-# include "raycast.h"
-
-typedef struct s_game_info
+void	error_exit(char *msg)
 {
-	t_texture_info	texture;
-	t_fc_info		fc;
-	t_map_info		map_data;
-	t_player_info	player;
-}	t_game_info;
-
-void	visualize(t_map *map_info);
-void	error_exit(char *msg);
-
-#endif
+	write(2, "ERROR : ", 8);
+	write(2, msg, ft_strlen(msg));
+	write(2, "\n", 1);
+	exit(1);
+}
