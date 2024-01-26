@@ -6,41 +6,22 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/26 14:55:56 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:13:55 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCAST_H
 # define RAYCAST_H
 
-# include "cub3d.h"
 # include <stdio.h>
 # include <math.h>
-# include <mlx.h>
-
-# define screenWidth 640
-# define screenHeight 480
+// # include <mlx.h>
 
 # define W 13
 # define A 0
 # define S 1
 # define D 2
 # define ESC 53
-
-typedef struct s_mlx
-{
-	void	*p;
-	void	*win;
-}	t_mlx;
-
-typedef struct s_xpm_to_img
-{
-	void	*p;
-	void	*wall_north;
-	void	*wall_south;
-	void	*wall_east;
-	void	*wall_west;
-}	t_img;
 
 //이미지의 정보를 나타내는 변수를 저장한 구조체
 typedef struct s_data
@@ -64,15 +45,6 @@ typedef struct s_player
 	double	plane_xv;
 	double	plane_yv;
 }	t_player;
-
-typedef struct s_game
-{
-	t_map		*map_info;
-	t_mlx		*mlx;
-	t_img		*texture;
-	t_data		*drawing;
-	t_player	*player;
-}	t_game;
 
 void	raycast(t_game *game);
 

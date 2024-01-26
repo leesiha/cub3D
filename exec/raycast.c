@@ -1,4 +1,4 @@
-#include "raycast.h"
+#include "cub3d.h"
 
 int create_trgb(int t, int r, int g, int b)
 {
