@@ -6,11 +6,16 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:49:05 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/25 18:58:17 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:30:41 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	color_make(int red, int green, int blue)
+{
+	return (red << 16 | green << 8 | blue);
+}
 
 void	last_space_remove(char *str)
 {
@@ -22,51 +27,47 @@ void	last_space_remove(char *str)
 	str[end_idx + 1] = '\0';
 }
 
-void	image_texture_creat(t_texture_info *texture, char *texture_str)
+void	image_texture_creat(t_img *texture, t_mlx *mlx, char *texture_str)
 {
 	int	value_idx;
 
 	value_idx = value_idx_find(texture_str, 0);
 	(void)texture;
-	// if (texture_str[0] == 'S')
-	// 	texture->south = mlx_xpm_file_to_image(mlx, \
-	// 	texture_str + value_idx, &texture->width, &texture->height);
-	// else if (texture_str[0] == 'N')
-	// 	texture->north = mlx_xpm_file_to_image(mlx, \
-	// 	texture_str + value_idx, &texture->width, &texture->height);
-	// else if (texture_str[0] == 'W')
-	// 	texture->west = mlx_xpm_file_to_image(mlx, \
-	// 	texture_str + value_idx, &texture->width, &texture->height);
-	// else if (texture_str[0] == 'E')
-	// 	texture->east = mlx_xpm_file_to_image(mlx, \
-	// 	texture_str + value_idx, &texture->width, &texture->height);
+	if (texture_str[0] == 'S')
+		texture->wall_south = mlx_xpm_file_to_image(mlx->p, \
+		texture_str + value_idx, &texture->w, &texture->h);
+	else if (texture_str[0] == 'N')
+		texture->wall_north = mlx_xpm_file_to_image(mlx->p, \
+		texture_str + value_idx, &texture->w, &texture->h);
+	else if (texture_str[0] == 'W')
+		texture->wall_west = mlx_xpm_file_to_image(mlx->p, \
+		texture_str + value_idx, &texture->w, &texture->h);
+	else if (texture_str[0] == 'E')
+		texture->wall_east = mlx_xpm_file_to_image(mlx->p, \
+		texture_str + value_idx, &texture->w, &texture->h);
 }
 
-void	image_fc_creat(t_fc_info *fc, char *fc_str)
+void	image_fc_creat(t_img *texture, char *fc_str)
 {
 	int	value_idx;
+	int	red;
+	int	green;
+	int	blue;
 
+	value_idx = value_idx_find(fc_str, 0);
+	red = ft_atoi(fc_str + value_idx);
+	value_idx = value_idx_find(fc_str, value_idx);
+	green = ft_atoi(fc_str + value_idx);
+	value_idx = value_idx_find(fc_str, value_idx);
+	blue = ft_atoi(fc_str + value_idx);
 	if (fc_str[0] == 'F')
-	{
-		value_idx = value_idx_find(fc_str, 0);
-		fc->floor[RED] = ft_atoi(fc_str + value_idx);
-		value_idx = value_idx_find(fc_str, value_idx);
-		fc->floor[GREEN] = ft_atoi(fc_str + value_idx);
-		value_idx = value_idx_find(fc_str, value_idx);
-		fc->floor[BLUE] = ft_atoi(fc_str + value_idx);
-	}
+		texture->floor_color = color_make(red, green, blue);
 	else if (fc_str[0] == 'C')
-	{
-		value_idx = value_idx_find(fc_str, 0);
-		fc->ceiling[RED] = ft_atoi(fc_str + value_idx);
-		value_idx = value_idx_find(fc_str, value_idx);
-		fc->ceiling[GREEN] = ft_atoi(fc_str + value_idx);
-		value_idx = value_idx_find(fc_str, value_idx);
-		fc->ceiling[BLUE] = ft_atoi(fc_str + value_idx);
-	}
+		texture->ceiling_color = color_make(red, green, blue);
+
 }
 
-void	game_image_creat(t_game_info *game, char **converted_str)
+void	game_image_creat(t_img *texture, t_mlx *mlx, char **converted_str)
 {
 	int	row;
 	int	col;
@@ -82,10 +83,10 @@ void	game_image_creat(t_game_info *game, char **converted_str)
 			converted_str[row][col] == 'N' || \
 			converted_str[row][col] == 'W' || \
 			converted_str[row][col] == 'E')
-			image_texture_creat(&game->texture, converted_str[row] + col);
+			image_texture_creat(texture, mlx, converted_str[row] + col);
 		else if (converted_str[row][col] == 'F' || \
 				converted_str[row][col] == 'C')
-			image_fc_creat(&game->fc, converted_str[row] + col);
+			image_fc_creat(texture, converted_str[row] + col);
 		row++;
 	}
 }

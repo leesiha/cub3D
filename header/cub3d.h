@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/26 15:40:47 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/26 16:08:46 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <mlx.h>
 # include "raycast.h"
 # include "parse.h"
 
@@ -23,11 +24,11 @@
 
 typedef struct s_game
 {
-	t_map		*map_info;
-	t_mlx		*mlx;
-	t_img		*texture;
-	t_data		*drawing;
-	t_player	*player;
+	t_map		map_info;
+	t_mlx		mlx;
+	t_img		texture;
+	t_data		drawing;
+	t_player	player;
 }	t_game;
 
 void	visualize(t_game *game);
