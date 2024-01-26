@@ -43,3 +43,6 @@ pre_make:
 
 pre_clean:
 	make clean -C $(LIBFT_DIR)
+
+pre_fclean:
+	make fclean -C $(LIBFT_DIR)
