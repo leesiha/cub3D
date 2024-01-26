@@ -5,11 +5,19 @@ int create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->size_line + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
 void raycast(t_game *game)
 {
 	t_player *player;
 
-	player = game->player;
+	player = &(game->player);
 
 	// DDA에서 사용할 변수. 광선 하나마다 이 값들이 모두 다를 것이다.
 	int int_pos_x, int_pos_y; // pos_x, pos_y의 정수버전. 맵 인덱스 접근을 위해 사용
@@ -84,7 +92,7 @@ void raycast(t_game *game)
 				side = 1;
 			}
 
-			if (game->map_info->map[int_pos_x][int_pos_y] > 0) // Check if ray has hit a wall
+			if (game->map_info.map[int_pos_x][int_pos_y] > '0') // Check if ray has hit a wall
 				hit = 1;
 		}
 		//!!공식 유도 이해해야함
@@ -108,18 +116,18 @@ void raycast(t_game *game)
 			draw_end = screenHeight - 1;
 
 		// 벽 색 지정
-		switch (game->map_info->map[int_pos_x][int_pos_y])
+		switch (game->map_info.map[int_pos_x][int_pos_y])
 		{
-		case 1:
+		case '1':
 			color = create_trgb(0, 255, 0, 0);
 			break; // red
-		case 2:
+		case '2':
 			color = create_trgb(0, 0, 255, 0);
 			break; // green
-		case 3:
+		case '3':
 			color = create_trgb(0, 0, 0, 255);
 			break; // blue
-		case 4:
+		case '4':
 			color = create_trgb(0, 255, 255, 255);
 			break; // white
 		default:
@@ -132,7 +140,7 @@ void raycast(t_game *game)
 		// draw_vertical_line
 		while (draw_start < draw_end)
 		{
-			mlx_pixel_put(game->mlx->p, game->mlx->win, x, draw_start, color);
+			mlx_pixel_put(game->mlx.p, game->mlx.win, x, draw_start, color);
 			draw_start++;
 		}
 	}

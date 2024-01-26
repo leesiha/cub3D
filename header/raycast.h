@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/26 16:03:52 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:47:21 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define A 0
 # define S 1
 # define D 2
+# define left 123
+# define right 124
 # define ESC 53
 
 //이미지의 정보를 나타내는 변수를 저장한 구조체
@@ -45,5 +47,7 @@ typedef struct s_player
 	double	plane_xv;
 	double	plane_yv;
 }	t_player;
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

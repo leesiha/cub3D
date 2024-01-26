@@ -6,39 +6,75 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:51:00 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/26 15:40:37 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/26 18:24:30 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_player(t_game *game, t_player *player)
+void	init_player(t_game *game)
 {
-	player->pos_x = game->map_info->p_col;
-	player->pos_y = game->map_info->p_row;
-	// player->pos_x = 22;
-	// player->pos_y = 12;
-
-	// (캐릭터 벡터 > 카메라평면 벡터) 그래서 FOV 는 90°보다 작다(1:1일 때 90°)
-	player->dir_xv = 1; // 데카르트 좌표계 기준 왼쪽 방향
-	player->dir_yv = 0;
-	player->plane_xv = 0;
-	player->plane_yv = 0.66; // 데카르트 좌표계 기준 위쪽 방향
+	game->player.pos_x = game->map_info.p_col;
+	game->player.pos_y = game->map_info.p_row;
+	game->player.dir_xv = -1;
+	game->player.dir_yv = 0;
+	game->player.plane_xv = 0;
+	game->player.plane_yv = 0.66;
 }
 
-void	init_draw(t_game *game, t_data *draw)
+void	init_draw(t_game *game)
 {
-	draw->img = mlx_new_image(game->mlx->p, screenWidth, screenHeight);
+	t_data *draw;
+
+	draw = &(game->drawing);
+	draw->img = mlx_new_image(game->mlx.p, screenWidth, screenHeight);
 	draw->addr = mlx_get_data_addr(draw->img, &draw->bits_per_pixel, &draw->size_line, &draw->endian);
+}
+
+void	clean_window(t_data *draw)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < screenHeight / 2)
+	{
+		x = 0;
+		while (x < screenWidth)
+		{
+			my_mlx_pixel_put(draw, x, y, 0x123456);
+			x++;
+		}
+		y++;
+	}
+	while (y < screenHeight)
+	{
+		x = 0;
+		while (x < screenWidth)
+		{
+			my_mlx_pixel_put(draw, x, y, 0x654321);
+			x++;
+		}
+		y++;
+	}
+}
+
+int	render_map(t_game *game)
+{
+	clean_window(&(game->drawing));
+	raycast(game);
+	mlx_put_image_to_window(game->mlx.p, game->mlx.win, game->drawing.img, 0, 0);
+	// mlx_destroy_image(game->mlx->p, game->drawing->img);
+	return (0);
 }
 
 int	key_hook(int keycode, t_game *game)
 {
 	t_player *player;
-	int **worldMap;
+	char **worldMap;
 
-	player = game->player;
-	worldMap = game->map_info->map;
+	player = &(game->player);
+	worldMap = game->map_info.map;
 
 	double frame_time; // frameTime은 현재 프레임이 나오는 데 걸린 시간(초)입니다.
 	double move_speed, rotate_speed;
@@ -49,27 +85,44 @@ int	key_hook(int keycode, t_game *game)
 
 	if (keycode == ESC)
 	{
-		mlx_destroy_window(game->mlx->p, game->mlx->win);
+		mlx_destroy_window(game->mlx.p, game->mlx.win);
 		exit(0);
 	}
 	
 	if (keycode == W)
 	{
-
-		if (worldMap[(int)(player->pos_x + player->dir_xv * move_speed)][(int)player->pos_y] == 0)
+		if (worldMap[(int)(player->pos_x + player->dir_xv * move_speed)][(int)player->pos_y] == '0')
 			player->pos_x += player->dir_xv * move_speed;
-		if (worldMap[(int)player->pos_x][(int)(player->pos_y + player->dir_yv * move_speed)] == 0)
+		if (worldMap[(int)player->pos_x][(int)(player->pos_y + player->dir_yv * move_speed)] == '0')
 			player->pos_y += player->dir_yv * move_speed;
+		render_map(game);
 	}
 	else if (keycode == S)
 	{
-		if (worldMap[(int)(player->pos_x - player->dir_xv * move_speed)][(int)player->pos_y] == 0)
+		if (worldMap[(int)(player->pos_x - player->dir_xv * move_speed)][(int)player->pos_y] == '0')
 			player->pos_x -= player->dir_xv * move_speed;
-		if (worldMap[(int)player->pos_x][(int)(player->pos_y - player->dir_yv * move_speed)] == 0)
+		if (worldMap[(int)player->pos_x][(int)(player->pos_y - player->dir_yv * move_speed)] == '0')
 			player->pos_y -= player->dir_yv * move_speed;
+		render_map(game);
+	}
+	else if (keycode == A)
+	{
+		if (worldMap[(int)(player->pos_x - player->dir_yv * move_speed)][(int)player->pos_y] == '0')
+			player->pos_x -= player->dir_yv * move_speed;
+		if (worldMap[(int)player->pos_x][(int)(player->pos_y - player->dir_xv * move_speed)] == '0')
+			player->pos_y -= player->dir_xv * move_speed;
+		render_map(game);
+	}
+	else if (keycode == D)
+	{
+		if (worldMap[(int)(player->pos_x + player->dir_yv * move_speed)][(int)player->pos_y] == '0')
+			player->pos_x += player->dir_yv * move_speed;
+		if (worldMap[(int)player->pos_x][(int)(player->pos_y + player->dir_xv * move_speed)] == '0')
+			player->pos_y += player->dir_xv * move_speed;
+		render_map(game);
 	}
 	
-	if (keycode == D)
+	if (keycode == right)
 	{
 		// both camera direction and camera plane must be rotated
 		double old_dir_xv = player->dir_xv;
@@ -78,8 +131,9 @@ int	key_hook(int keycode, t_game *game)
 		double old_plane_xv = player->plane_xv;
 		player->plane_xv = player->plane_xv * cos(rotate_speed) - player->plane_yv * sin(rotate_speed);
 		player->plane_yv = old_plane_xv * sin(rotate_speed) + player->plane_yv * cos(rotate_speed);
+		render_map(game);
 	}
-	else if (keycode == A)
+	else if (keycode == left)
 	{
 		// both camera direction and camera plane must be rotated
 		double old_dir_xv = player->dir_xv;
@@ -88,33 +142,23 @@ int	key_hook(int keycode, t_game *game)
 		double old_plane_xv = player->plane_xv;
 		player->plane_xv = player->plane_xv * cos(-rotate_speed) - player->plane_yv * sin(-rotate_speed);
 		player->plane_yv = old_plane_xv * sin(-rotate_speed) + player->plane_yv * cos(-rotate_speed);
+		render_map(game);
 	}
-	return (0);
-}
-
-int	render_map(t_game *game)
-{
-	t_data	draw;
-
-	init_draw(game, &draw);
-	game->drawing = &draw;
-	mlx_put_image_to_window(game->mlx->p, game->mlx->win, draw.img, 0, 0);
-	raycast(game);
-	// mlx_put_image_to_window(game->mlx->p, game->mlx->win, draw.img, 0, 0);
-	mlx_destroy_image(game->mlx->p, draw.img);
 	return (0);
 }
 
 void	visualize(t_game *game)
 {
-	t_mlx		mlx;
-	// t_img		texture;
-	t_player	player;
-
-	init_player(&game, &player);
-	game->player = &player;
-
-	mlx_hook(mlx.win, 2, 0, key_hook, game);
-	mlx_loop_hook(mlx.p, render_map, game);
-	mlx_loop(mlx.p);
+	// 받아온 맵 출력
+	// for (int i = 0; i < game->map_info.h; i++)
+	// {
+	// 	for (int j = 0; j < game->map_info.w; j++)
+	// 		printf("%c", game->map_info.map[i][j]);
+	// 	printf("\n");
+	// }
+	init_player(game);
+	init_draw(game);
+	render_map(game);
+	mlx_hook(game->mlx.p, 2, 0, key_hook, game);
+	mlx_loop(game->mlx.p);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_image_creat.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:49:05 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/26 16:30:41 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/26 18:23:45 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@ void	image_texture_creat(t_img *texture, t_mlx *mlx, char *texture_str)
 
 	value_idx = value_idx_find(texture_str, 0);
 	(void)texture;
-	if (texture_str[0] == 'S')
-		texture->wall_south = mlx_xpm_file_to_image(mlx->p, \
-		texture_str + value_idx, &texture->w, &texture->h);
-	else if (texture_str[0] == 'N')
-		texture->wall_north = mlx_xpm_file_to_image(mlx->p, \
-		texture_str + value_idx, &texture->w, &texture->h);
-	else if (texture_str[0] == 'W')
-		texture->wall_west = mlx_xpm_file_to_image(mlx->p, \
-		texture_str + value_idx, &texture->w, &texture->h);
-	else if (texture_str[0] == 'E')
-		texture->wall_east = mlx_xpm_file_to_image(mlx->p, \
-		texture_str + value_idx, &texture->w, &texture->h);
+	(void)mlx;
+	// if (texture_str[0] == 'S')
+	// 	texture->wall_south = mlx_xpm_file_to_image(mlx->p, \
+	// 	texture_str + value_idx, &texture->w, &texture->h);
+	// else if (texture_str[0] == 'N')
+	// 	texture->wall_north = mlx_xpm_file_to_image(mlx->p, \
+	// 	texture_str + value_idx, &texture->w, &texture->h);
+	// else if (texture_str[0] == 'W')
+	// 	texture->wall_west = mlx_xpm_file_to_image(mlx->p, \
+	// 	texture_str + value_idx, &texture->w, &texture->h);
+	// else if (texture_str[0] == 'E')
+	// 	texture->wall_east = mlx_xpm_file_to_image(mlx->p, \
+	// 	texture_str + value_idx, &texture->w, &texture->h);
 }
 
 void	image_fc_creat(t_img *texture, char *fc_str)

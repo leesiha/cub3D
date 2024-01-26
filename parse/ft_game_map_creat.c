@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_map_creat.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:33:45 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/26 15:56:36 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:53:39 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	map_size_find(t_map *map_info, char **converted_str)
 	}
 	map_info->h = row - 6;
 	map_info->w = col;
+	map_info->p_row = 7;
+	map_info->p_col = 7;
 }
 
 void	map_init(t_map *map_info)

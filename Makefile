@@ -13,15 +13,22 @@ LIBFT_DIR		 = ./libft
 CUB3D		 = cub3d.a
 
 SRCS		= cub3d.c \
+				all_utils.c \
 				exec/raycast.c \
 				exec/visualize.c \
+				parse/ft_game_image_creat.c \
+				parse/ft_game_map_creat.c \
+				parse/ft_parse_file_convert.c \
+				parse/parse_utils.c \
+				parse/parse.c \
+
 
 OBJS        = $(SRCS:.c=.o)
 
 all: pre_make $(NAME)
 
 $(NAME): $(CUB3D)
-	$(CC) $(CFLAGS) $(LINKS_LIBRARY) -lmlx -framework OpenGL -framework AppKit -fsanitize=address $^ -o $@
+	$(CC) $(CFLAGS) $(LINKS_LIBRARY) -lmlx -framework OpenGL -framework AppKit $^ -o $@
 
 $(CUB3D): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
