@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:51:00 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/26 18:24:30 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/26 20:29:18 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	init_player(t_game *game)
 {
 	game->player.pos_x = game->map_info.p_col;
 	game->player.pos_y = game->map_info.p_row;
-	game->player.dir_xv = -1;
-	game->player.dir_yv = 0;
-	game->player.plane_xv = 0;
-	game->player.plane_yv = 0.66;
+	game->player.dir_xv = 0;
+	game->player.dir_yv = 1;
+	game->player.plane_xv = 0.66;
+	game->player.plane_yv = 0;
 }
 
 void	init_draw(t_game *game)
@@ -31,7 +31,7 @@ void	init_draw(t_game *game)
 	draw->addr = mlx_get_data_addr(draw->img, &draw->bits_per_pixel, &draw->size_line, &draw->endian);
 }
 
-void	clean_window(t_data *draw)
+void	clean_window(t_game *game)
 {
 	int x;
 	int y;
@@ -42,7 +42,7 @@ void	clean_window(t_data *draw)
 		x = 0;
 		while (x < screenWidth)
 		{
-			my_mlx_pixel_put(draw, x, y, 0x123456);
+			my_mlx_pixel_put(&game->drawing, x, y, game->texture.ceiling_color);
 			x++;
 		}
 		y++;
@@ -52,7 +52,7 @@ void	clean_window(t_data *draw)
 		x = 0;
 		while (x < screenWidth)
 		{
-			my_mlx_pixel_put(draw, x, y, 0x654321);
+			my_mlx_pixel_put(&game->drawing, x, y, game->texture.floor_color);
 			x++;
 		}
 		y++;
@@ -61,11 +61,25 @@ void	clean_window(t_data *draw)
 
 int	render_map(t_game *game)
 {
-	clean_window(&(game->drawing));
+	clean_window(game);
 	raycast(game);
 	mlx_put_image_to_window(game->mlx.p, game->mlx.win, game->drawing.img, 0, 0);
 	// mlx_destroy_image(game->mlx->p, game->drawing->img);
 	return (0);
+}
+
+void move(t_game *game, double speed)
+{
+	int estimated_x;
+	int estimated_y;
+
+	estimated_x = game->player.pos_x + game->player.dir_xv * speed;
+	estimated_y = game->player.pos_y + game->player.dir_yv * speed;
+	if (game->map_info.map[estimated_x][estimated_y] == '0')
+	{
+		game->player.pos_x += game->player.dir_xv * speed;
+		game->player.pos_y += game->player.dir_yv * speed;
+	}
 }
 
 int	key_hook(int keycode, t_game *game)
@@ -122,7 +136,7 @@ int	key_hook(int keycode, t_game *game)
 		render_map(game);
 	}
 	
-	if (keycode == right)
+	if (keycode == left)
 	{
 		// both camera direction and camera plane must be rotated
 		double old_dir_xv = player->dir_xv;
@@ -133,7 +147,7 @@ int	key_hook(int keycode, t_game *game)
 		player->plane_yv = old_plane_xv * sin(rotate_speed) + player->plane_yv * cos(rotate_speed);
 		render_map(game);
 	}
-	else if (keycode == left)
+	else if (keycode == right)
 	{
 		// both camera direction and camera plane must be rotated
 		double old_dir_xv = player->dir_xv;
@@ -159,6 +173,6 @@ void	visualize(t_game *game)
 	init_player(game);
 	init_draw(game);
 	render_map(game);
-	mlx_hook(game->mlx.p, 2, 0, key_hook, game);
+	mlx_hook(game->mlx.win, 2, 0, key_hook, game);
 	mlx_loop(game->mlx.p);
 }

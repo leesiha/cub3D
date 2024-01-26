@@ -92,7 +92,7 @@ void raycast(t_game *game)
 				side = 1;
 			}
 
-			if (game->map_info.map[int_pos_x][int_pos_y] > '0') // Check if ray has hit a wall
+			if (game->map_info.map[int_pos_x][int_pos_y] == '1') // Check if ray has hit a wall
 				hit = 1;
 		}
 		//!!공식 유도 이해해야함
@@ -140,7 +140,7 @@ void raycast(t_game *game)
 		// draw_vertical_line
 		while (draw_start < draw_end)
 		{
-			mlx_pixel_put(game->mlx.p, game->mlx.win, x, draw_start, color);
+			my_mlx_pixel_put(&game->drawing, x, draw_start, color);
 			draw_start++;
 		}
 	}
