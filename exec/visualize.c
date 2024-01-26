@@ -6,35 +6,11 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:51:00 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/25 18:05:51 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/26 15:40:37 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycast.h"
-
-void	init_mlx(t_mlx *x)
-{
-	x->p = mlx_init();
-	// if (!x->p)
-	// 	error_exit(0, "mlx_init failed");
-	x->win = mlx_new_window(x->p, screenWidth, screenHeight, "cub3D");
-	// if (!x->win)
-	// 	error_exit(0, "mlx_new_window failed");
-}
-
-// void	init_texture(t_mlx *mlx, t_img *img) // 매개변수 수정 필요
-// {
-// 	int	w;
-// 	int	h;
-
-// 	img->p = mlx_xpm_file_to_image(mlx->p, "./textures/p.xpm", &w, &h);
-// 	img->wall_north = mlx_xpm_file_to_image(mlx->p, "./textures/c.xpm", &w, &h);
-// 	img->wall_south = mlx_xpm_file_to_image(mlx->p, "./textures/w.xpm", &w, &h);
-// 	img->wall_east = mlx_xpm_file_to_image(mlx->p, "./textures/r.xpm", &w, &h);
-// 	img->wall_west = mlx_xpm_file_to_image(mlx->p, "./textures/r.xpm", &w, &h);
-// 	if (!img->p || !img->wall_north || !img->wall_south || !img->wall_east || !img->wall_west)
-// 		error_exit(0, "mlx_xpm_file_to_image failed");
-// }
+#include "cub3d.h"
 
 void	init_player(t_game *game, t_player *player)
 {
@@ -129,22 +105,16 @@ int	render_map(t_game *game)
 	return (0);
 }
 
-void	visualize(t_map *map_info)
+void	visualize(t_game *game)
 {
 	t_mlx		mlx;
 	// t_img		texture;
 	t_player	player;
-	t_game		game;
 
-	game.map_info = map_info;
-	init_mlx(&mlx);
-	game.mlx = &mlx;
-	// init_texture(&game, &texture);
-	// game.texture = &texture;
 	init_player(&game, &player);
-	game.player = &player;
+	game->player = &player;
 
-	mlx_hook(mlx.win, 2, 0, key_hook, &game);
-	mlx_loop_hook(mlx.p, render_map, &game);
+	mlx_hook(mlx.win, 2, 0, key_hook, game);
+	mlx_loop_hook(mlx.p, render_map, game);
 	mlx_loop(mlx.p);
 }

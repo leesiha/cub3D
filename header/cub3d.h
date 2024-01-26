@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/26 15:13:52 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:40:47 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef struct s_game
 	t_player	*player;
 }	t_game;
 
-void	visualize(t_map *map_info);
+void	visualize(t_game *game);
+void	raycast(t_game *game);
 void	error_exit(char *msg);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/26 15:13:55 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:35:18 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdio.h>
 # include <math.h>
-// # include <mlx.h>
+# include <mlx.h>
 
 # define W 13
 # define A 0
@@ -45,7 +45,5 @@ typedef struct s_player
 	double	plane_xv;
 	double	plane_yv;
 }	t_player;
-
-void	raycast(t_game *game);
 
 #endif
