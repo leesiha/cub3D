@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:56:53 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/28 20:21:44 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:26:40 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	raycast(t_game *game)
 	t_wall		wall;
 	int			x;
 
+	x = 0;
 	while (x < SCREEN_WIDTH)
 	{
 		ddl.plane_x = 2 * x / (double)SCREEN_WIDTH - 1;
