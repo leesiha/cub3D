@@ -14,6 +14,9 @@ CUB3D		 = cub3d.a
 
 SRCS		= cub3d.c \
 				all_utils.c \
+				exec/cardinal_points.c \
+				exec/keyhook.c \
+				exec/mlx_utils.c \
 				exec/raycast.c \
 				exec/visualize.c \
 				parse/ft_game_image_creat.c \

@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/26 17:47:16 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/28 16:06:34 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,13 @@ typedef struct s_game
 }	t_game;
 
 void	parse(t_game *game, char *full_name);
+
+void	clean_window(t_game *game);
+int		render_map(t_game *game);
 void	visualize(t_game *game);
 void	raycast(t_game *game);
+int		key_hook(int keycode, t_game *game);
+
 void	error_exit(char *msg);
 
 #endif
