@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:51:00 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/28 19:23:04 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:18:05 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	init_player(t_game *game)
 
 void	init_draw(t_game *game)
 {
-	t_data *ptr;
+	t_data	*ptr;
 
 	ptr = &(game->drawing);
-	ptr->img = mlx_new_image(game->mlx.p, screenWidth, screenHeight);
+	ptr->img = mlx_new_image(game->mlx.p, SCREEN_WIDTH, SCREEN_HEIGHT);
 	ptr->addr = mlx_get_data_addr(ptr->img, &ptr->bits_per_pixel, &ptr->size_line, &ptr->endian);
 }
 

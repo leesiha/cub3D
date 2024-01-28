@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:33:26 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/26 16:15:16 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/28 20:16:01 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	parse(t_game *game, char *full_name)
 	if (game->mlx.p == NULL)
 		error_exit("mlx_init failed");
 	game->mlx.win = \
-	mlx_new_window(game->mlx.p, screenWidth, screenHeight, "cub3D");
+	mlx_new_window(game->mlx.p, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	if (game->mlx.win == NULL)
 		error_exit("mlx_new_window failed");
 	game_image_creat(&game->texture, &game->mlx, converted_str);

@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/28 16:06:34 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:16:06 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "raycast.h"
 # include "parse.h"
 
-# define screenWidth 640
-# define screenHeight 480
+# define SCREEN_WIDTH 640
+# define SCREEN_HEIGHT 480
 
 typedef struct s_game
 {

@@ -6,13 +6,13 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:00:38 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/28 19:32:00 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:22:06 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void rotate(t_player *player, double theta)
+void	rotate(t_player *player, double theta)
 {
 	double	tmp_x;
 	double	tmp_y;
@@ -27,10 +27,10 @@ void rotate(t_player *player, double theta)
 	player->plane_yv = tmp_y;
 }
 
-void move_updown(t_player *player, char **map, double delta)
+void	move_updown(t_player *player, char **map, double delta)
 {
-	double estimated_x;
-	double estimated_y;
+	double	estimated_x;
+	double	estimated_y;
 
 	estimated_x = player->pos_x + player->dir_xv * delta;
 	estimated_y = player->pos_y + player->dir_yv * delta;
@@ -40,10 +40,10 @@ void move_updown(t_player *player, char **map, double delta)
 		player->pos_y = estimated_y;
 }
 
-void move_leftright(t_player *player, char **map, double delta)
+void	move_leftright(t_player *player, char **map, double delta)
 {
-	double estimated_x;
-	double estimated_y;
+	double	estimated_x;
+	double	estimated_y;
 
 	estimated_x = player->pos_x + player->dir_yv * delta;
 	estimated_y = player->pos_y - player->dir_xv * delta;

@@ -6,85 +6,85 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 19:50:43 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/28 20:02:55 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:17:30 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void set_color_north(t_ddl *d, t_wall *w)
+void	set_color_north(t_ddl *d, t_wall *w)
 {
 	if (d->side == 0)
 	{
-		if (d->ray_xv < 0) // west
+		if (d->ray_xv < 0)
 			w->color = create_trgb(0, 255, 0, 0);
-		else // east
+		else
 			w->color = create_trgb(0, 0, 255, 0);
 	}
-	else // side == 1
+	else
 	{
-		if (d->ray_yv > 0) // north
+		if (d->ray_yv > 0)
 			w->color = create_trgb(0, 0, 0, 255);
-		else // south
+		else
 			w->color = create_trgb(0, 255, 255, 255);
 	}
 }
 
-void set_color_south(t_ddl *d, t_wall *w)
+void	set_color_south(t_ddl *d, t_wall *w)
 {
 	if (d->side == 0)
 	{
-		if (d->ray_xv < 0) // 
+		if (d->ray_xv < 0)
 			w->color = create_trgb(0, 0, 255, 0);
-		else // 
+		else
 			w->color = create_trgb(0, 255, 0, 0);
 	}
-	else // side == 1
+	else
 	{
-		if (d->ray_yv > 0) // south
+		if (d->ray_yv > 0)
 			w->color = create_trgb(0, 255, 255, 255);
-		else // north
+		else
 			w->color = create_trgb(0, 0, 0, 255);
 	}
 }
 
-void set_color_west(t_ddl *d, t_wall *w)
+void	set_color_west(t_ddl *d, t_wall *w)
 {
 	if (d->side == 0)
 	{
-		if (d->ray_xv < 0) // 
+		if (d->ray_xv < 0)
 			w->color = create_trgb(0, 0, 0, 255);
-		else // 
+		else
 			w->color = create_trgb(0, 255, 255, 255);
 	}
-	else // side == 1
+	else
 	{
-		if (d->ray_yv > 0) // west
+		if (d->ray_yv > 0)
 			w->color = create_trgb(0, 255, 0, 0);
-		else // east
+		else
 			w->color = create_trgb(0, 0, 255, 0);
 	}
 }
 
-void set_color_east(t_ddl *d, t_wall *w)
+void	set_color_east(t_ddl *d, t_wall *w)
 {
 	if (d->side == 0)
 	{
-		if (d->ray_xv < 0) // 
+		if (d->ray_xv < 0)
 			w->color = create_trgb(0, 255, 255, 255);
-		else // 
+		else
 			w->color = create_trgb(0, 0, 0, 255);
 	}
-	else // side == 1
+	else
 	{
-		if (d->ray_yv > 0) // east
+		if (d->ray_yv > 0)
 			w->color = create_trgb(0, 0, 255, 0);
-		else // west
+		else
 			w->color = create_trgb(0, 255, 0, 0);
 	}
 }
 
-void set_wall_color(t_player *p, t_ddl *d, t_wall *w)
+void	set_wall_color(t_player *p, t_ddl *d, t_wall *w)
 {
 	if (p->cardinal_points == 'N')
 		set_color_north(d, w);
@@ -94,6 +94,6 @@ void set_wall_color(t_player *p, t_ddl *d, t_wall *w)
 		set_color_west(d, w);
 	else if (p->cardinal_points == 'E')
 		set_color_east(d, w);
-	if (d->side == 1) // 그림자 효과?
+	if (d->side == 1)
 		w->color = w->color / 2;
 }
