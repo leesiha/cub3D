@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:00:38 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/29 16:36:43 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/30 13:17:43 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 	{
-		mlx_destroy_window(game->mlx.p, game->mlx.win);
+		mlx_destroy_window(game->mlx.mlx_p, game->mlx.win_p);
 		exit(0);
 	}
 	if (keycode == W)

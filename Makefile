@@ -19,11 +19,16 @@ SRCS		= cub3d.c \
 				exec/mlx_utils.c \
 				exec/raycast.c \
 				exec/visualize.c \
-				parse/ft_game_image_creat.c \
-				parse/ft_game_map_creat.c \
-				parse/ft_parse_file_convert.c \
-				parse/parse_utils.c \
 				parse/parse.c \
+				parse/file_convert/ft_convert_file_to_str.c \
+				parse/file_convert/ft_convert_map_nl_check.c \
+				parse/file_convert/convert_utils.c \
+				parse/game_valid_make/valid_make_handling.c \
+				parse/game_valid_make/valid_make_utils.c \
+				parse/game_valid_make/ft_texture_img_creat.c \
+				parse/game_valid_make/ft_texture_rgb_creat.c \
+				parse/game_valid_make/ft_map_info_creat.c \
+				parse/game_valid_make/ft_map_valid_check.c \
 
 
 OBJS        = $(SRCS:.c=.o)
