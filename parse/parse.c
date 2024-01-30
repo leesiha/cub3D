@@ -6,7 +6,7 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:33:26 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 11:59:53 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:05:49 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**parse_file_convert(char *full_name)
 
 void	parse_game_valid_make(t_game *game, char **converted_str)
 {
-	// valid_make_texture(&game->texture, game->mlx, converted_str);
+	valid_make_texture(&game->texture, game->mlx, converted_str);
 	valid_make_map(&game->map_info, converted_str);
 }
 

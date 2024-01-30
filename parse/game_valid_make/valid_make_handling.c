@@ -6,7 +6,7 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:16:36 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 11:49:36 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:06:18 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,25 @@ void	valid_make_texture(t_img *texture, t_mlx mlx, char **converted_str)
 
 	row = 0;
 	texture_init(texture);
+	(void)mlx;
 	while (row < 6)
 	{
 		col = 0;
 		while (converted_str[row][col] == ' ')
 			col++;
-		if (!ft_strncmp(converted_str[row] + col, "SO ", 3) || \
-			!ft_strncmp(converted_str[row] + col, "NO ", 3) || \
-			!ft_strncmp(converted_str[row] + col, "WE ", 3) || \
-			!ft_strncmp(converted_str[row] + col, "EA ", 3))
-			texture_img_creat(texture, mlx.mlx_p, \
-							converted_str[row] + col);
-		else if (!ft_strncmp(converted_str[row] + col, "F ", 2) || \
+		// if (!ft_strncmp(converted_str[row] + col, "SO ", 3) || \
+		// 	!ft_strncmp(converted_str[row] + col, "NO ", 3) || \
+		// 	!ft_strncmp(converted_str[row] + col, "WE ", 3) || \
+		// 	!ft_strncmp(converted_str[row] + col, "EA ", 3))
+		// 	texture_img_creat(texture, mlx.mlx_p, \
+		// 					converted_str[row] + col);
+		if (!ft_strncmp(converted_str[row] + col, "F ", 2) || \
 				!ft_strncmp(converted_str[row] + col, "C ", 2))
 			texture_rgb_creat(texture, converted_str[row] + col);
 		row++;
 	}
-	if (texture->wall_south == NULL || texture->wall_north == NULL || \
-		texture->wall_west == NULL || texture->wall_east == NULL || \
-		texture->floor_color == -1 || texture->ceiling_color == -1)
-		error_exit("Invalid texture form");
+	// if (texture->wall_south == NULL || texture->wall_north == NULL || \
+	// 	texture->wall_west == NULL || texture->wall_east == NULL || \
+	// 	texture->floor_color == -1 || texture->ceiling_color == -1)
+	// 	error_exit("Invalid texture form");
 }
