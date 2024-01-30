@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:56:53 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/28 20:26:40 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/30 22:17:27 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	run_ddl(char **map, t_ddl *d)
 			d->int_pos_y += d->step_y;
 			d->side = 1;
 		}
-		if (map[d->int_pos_x][d->int_pos_y] == '1')
+		if (map[d->int_pos_y][d->int_pos_x] == '1')
 			return ;
 	}
 }

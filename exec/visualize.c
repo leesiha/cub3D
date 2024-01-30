@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visualize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:51:00 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/30 13:19:35 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:42:21 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_player(t_game *game)
 {
-	game->player.pos_x = game->map_info.p_x;
-	game->player.pos_y = game->map_info.p_y;
+	game->player.pos_x = game->map_info.p_x + 0.5;
+	game->player.pos_y = game->map_info.p_y + 0.5;
 	game->player.cardinal_points = game->map_info.map[game->map_info.p_y][game->map_info.p_x];
 	game->player.dir_xv = 0;
 	game->player.dir_yv = 1;
