@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*   convert_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 14:37:03 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/25 18:13:31 by taehkim2         ###   ########.fr       */
+/*   Created: 2024/01/30 09:02:21 by taehkim2          #+#    #+#             */
+/*   Updated: 2024/01/30 09:02:31 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	th_free(char *str)
-{
-	free(str);
-	str = NULL;
-}
 
 int	file_name_check(char *full_name)
 {
@@ -36,13 +30,4 @@ int	file_name_check(char *full_name)
 	if (file_name[1] == '.' || ft_strncmp(extension_name, ".cub", 4))
 		return (END);
 	return (NEXT);
-}
-
-int	value_idx_find(char *str, int idx)
-{
-	while (str[idx] != ' ')
-		idx++;
-	while (str[idx] == ' ' || str[idx] == ',')
-		idx++;
-	return (idx);
 }
