@@ -6,13 +6,13 @@
 /*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:56:53 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/30 22:17:27 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/31 20:59:10 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_ddl(t_player *p, t_ddl *d)
+void	init_dda(t_player *p, t_dda *d)
 {
 	d->ray_xv = p->dir_xv + (p->plane_xv * d->plane_x);
 	d->ray_yv = p->dir_yv + (p->plane_yv * d->plane_x);
@@ -28,7 +28,7 @@ void	init_ddl(t_player *p, t_ddl *d)
 		d->delta_dist_y = fabs(1 / d->ray_yv);
 }
 
-void	determine_step(t_player *p, t_ddl *d)
+void	determine_step(t_player *p, t_dda *d)
 {
 	if (d->ray_xv < 0)
 	{
@@ -52,7 +52,7 @@ void	determine_step(t_player *p, t_ddl *d)
 	}
 }
 
-void	run_ddl(char **map, t_ddl *d)
+void	run_dda(char **map, t_dda *d)
 {
 	while (1)
 	{
@@ -73,7 +73,7 @@ void	run_ddl(char **map, t_ddl *d)
 	}
 }
 
-void	get_wall_info(t_player *p, t_ddl *d, t_wall *w)
+void	get_wall_info(t_player *p, t_dda *d, t_wall *w)
 {
 	double	perp_wall_dist;
 
@@ -93,18 +93,18 @@ void	get_wall_info(t_player *p, t_ddl *d, t_wall *w)
 
 void	raycast(t_game *game)
 {
-	t_ddl		ddl;
+	t_dda		dda;
 	t_wall		wall;
 	int			x;
 
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{
-		ddl.plane_x = 2 * x / (double)SCREEN_WIDTH - 1;
-		init_ddl(&game->player, &ddl);
-		determine_step(&game->player, &ddl);
-		run_ddl(game->map_info.map, &ddl);
-		get_wall_info(&game->player, &ddl, &wall);
+		dda.plane_x = 2 * x / (double)SCREEN_WIDTH - 1;
+		init_dda(&game->player, &dda);
+		determine_step(&game->player, &dda);
+		run_dda(game->map_info.map, &dda);
+		get_wall_info(&game->player, &dda, &wall);
 		while (wall.draw_start < wall.draw_end)
 		{
 			my_mlx_pixel_put(&game->drawing, x, wall.draw_start, wall.color);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/28 20:15:08 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/31 20:59:09 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_player
 }	t_player;
 
 // DDA에서 사용할 변수. 광선 하나마다 이 값들이 모두 다를 것이다.
-typedef struct s_ddl
+typedef struct s_dda
 {
 	int		int_pos_x;
 	int		int_pos_y;
@@ -65,7 +65,7 @@ typedef struct s_ddl
 	int		hit;
 	int		step_x;
 	int		step_y;
-}	t_ddl;
+}	t_dda;
 
 typedef struct wall
 {
@@ -81,6 +81,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	rotate(t_player *player, double theta);
 void	move_updown(t_player *player, char **map, double delta);
 void	move_leftright(t_player *player, char **map, double delta);
-void	set_wall_color(t_player *p, t_ddl *d, t_wall *w);
+void	set_wall_color(t_player *p, t_dda *d, t_wall *w);
 
 #endif
