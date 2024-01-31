@@ -13,20 +13,20 @@
 
 
 
-SO     1
+SO     texture/wall_south.xpm
 
 
 
 
 
 
-EA    1
+EA    texture/wall_east.xpm
 
       F      244, 244, 244
 
 C       144, 244, 244
-NO      1
-WE     1
+NO      texture/wall_north.xpm
+WE     texture/wall_west.xpm
 
 1111111111111
 1000000000001         11111
