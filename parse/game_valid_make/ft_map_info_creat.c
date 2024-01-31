@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_info_creat.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:59:40 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 19:03:33 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:41:38 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	map_creat(t_map *map_info, char **converted_str, \
 		str_row++;
 		map_row++;
 	}
-	map_info->map[map_info->p_y][map_info->p_x] = '0';
 }
 
 void	map_info_creat(t_map *map_info, char **converted_str)
