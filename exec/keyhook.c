@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:00:38 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/30 23:35:28 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/01/31 22:03:00 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	move_leftright(t_player *player, char **map, double delta)
 	double	estimated_x;
 	double	estimated_y;
 
-	estimated_x = player->pos_x + player->dir_yv * delta;
-	estimated_y = player->pos_y - player->dir_xv * delta;
+	estimated_x = player->pos_x - player->dir_yv * delta;
+	estimated_y = player->pos_y + player->dir_xv * delta;
 	if (map[(int)player->pos_y][(int)estimated_x] != '1')
 		player->pos_x = estimated_x;
 	if (map[(int)estimated_y][(int)player->pos_x] != '1')
@@ -65,9 +65,9 @@ int	key_hook(int keycode, t_game *game)
 	else if (keycode == S)
 		move_updown(&game->player, game->map_info.map, -MOVESPEED);
 	else if (keycode == D)
-		move_leftright(&game->player, game->map_info.map, MOVESPEED);
-	else if (keycode == A)
 		move_leftright(&game->player, game->map_info.map, -MOVESPEED);
+	else if (keycode == A)
+		move_leftright(&game->player, game->map_info.map, MOVESPEED);
 	if (keycode == LEFT)
 		rotate(&game->player, ROTSPEED);
 	else if (keycode == RIGHT)
