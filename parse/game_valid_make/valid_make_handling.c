@@ -6,7 +6,7 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:16:36 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 14:06:18 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:33:14 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	valid_make_texture(t_img *texture, t_mlx mlx, char **converted_str)
 		// 	texture_img_creat(texture, mlx.mlx_p, \
 		// 					converted_str[row] + col);
 		if (!ft_strncmp(converted_str[row] + col, "F ", 2) || \
-				!ft_strncmp(converted_str[row] + col, "C ", 2))
+			!ft_strncmp(converted_str[row] + col, "C ", 2))
 			texture_rgb_creat(texture, converted_str[row] + col);
 		row++;
 	}
