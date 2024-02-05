@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:16:36 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/05 15:36:13 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 17:39:59 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	texture_init(t_img *texture)
 
 	direction = 0;
 	while (direction < 4)
+	{
 		texture->wall[direction] = NULL;
+		direction++;
+	}
 	texture->floor_color = -1;
 	texture->ceiling_color = -1;
 }
@@ -52,12 +55,12 @@ void	valid_make_texture(t_img *texture, t_mlx mlx, char **converted_str)
 		col = 0;
 		while (converted_str[row][col] == ' ')
 			col++;
-		// if (!ft_strncmp(converted_str[row] + col, "SO ", 3) || \
-		// 	!ft_strncmp(converted_str[row] + col, "NO ", 3) || \
-		// 	!ft_strncmp(converted_str[row] + col, "WE ", 3) || \
-		// 	!ft_strncmp(converted_str[row] + col, "EA ", 3))
-		// 	texture_img_creat(texture, mlx.mlx_p, \
-		// 					converted_str[row] + col);
+		if (!ft_strncmp(converted_str[row] + col, "SO ", 3) || \
+			!ft_strncmp(converted_str[row] + col, "NO ", 3) || \
+			!ft_strncmp(converted_str[row] + col, "WE ", 3) || \
+			!ft_strncmp(converted_str[row] + col, "EA ", 3))
+			texture_img_creat(texture, mlx.mlx_p, \
+							converted_str[row] + col);
 		if (!ft_strncmp(converted_str[row] + col, "F ", 2) || \
 			!ft_strncmp(converted_str[row] + col, "C ", 2))
 			texture_rgb_creat(texture, converted_str[row] + col);
