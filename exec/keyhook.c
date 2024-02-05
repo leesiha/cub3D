@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:00:38 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/31 22:03:00 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 22:27:50 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void	move_updown(t_player *player, char **map, double delta)
 
 	estimated_x = player->pos_x + player->dir_xv * delta;
 	estimated_y = player->pos_y + player->dir_yv * delta;
-	if (map[(int)player->pos_y][(int)estimated_x] != '1')
+	if (map[(int)player->pos_y][(int)(estimated_x + 0.1)] != '1'
+		&& map[(int)player->pos_y][(int)(estimated_x - 0.1)] != '1')
 		player->pos_x = estimated_x;
-	if (map[(int)estimated_y][(int)player->pos_x] != '1')
+	if (map[(int)(estimated_y + 0.1)][(int)player->pos_x] != '1'
+		&& map[(int)(estimated_y - 0.1)][(int)player->pos_x] != '1')
 		player->pos_y = estimated_y;
 }
 
@@ -47,9 +49,11 @@ void	move_leftright(t_player *player, char **map, double delta)
 
 	estimated_x = player->pos_x - player->dir_yv * delta;
 	estimated_y = player->pos_y + player->dir_xv * delta;
-	if (map[(int)player->pos_y][(int)estimated_x] != '1')
+	if (map[(int)player->pos_y][(int)(estimated_x + 0.1)] != '1'
+		&& map[(int)player->pos_y][(int)(estimated_x - 0.1)] != '1')
 		player->pos_x = estimated_x;
-	if (map[(int)estimated_y][(int)player->pos_x] != '1')
+	if (map[(int)(estimated_y + 0.1)][(int)player->pos_x] != '1'
+		&& map[(int)(estimated_y - 0.1)][(int)player->pos_x] != '1')
 		player->pos_y = estimated_y;
 }
 
