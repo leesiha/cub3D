@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/05 21:26:26 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 22:42:37 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_player
 	double	plane_yv;
 }	t_player;
 
-// DDA에서 사용할 변수. 광선 하나마다 이 값들이 모두 다를 것이다.
 typedef struct s_dda
 {
 	int		int_pos_x;
@@ -69,8 +68,8 @@ typedef struct s_dda
 
 typedef struct wall
 {
-	double		perp_wall_dist;
-	double		wall_height;
+	double	perp_wall_dist;
+	double	wall_height;
 	double	wall_x;
 	int		texture_x;
 	double	step;
@@ -80,8 +79,6 @@ typedef struct wall
 	int		draw_end;
 	int		color;
 }	t_wall;
-
-int		create_trgb(int t, int r, int g, int b);
 
 void	rotate(t_player *player, double theta);
 void	move_updown(t_player *player, char **map, double delta);
