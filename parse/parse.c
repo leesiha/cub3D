@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:33:26 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 19:06:22 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:51:48 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**parse_file_convert(char *full_name)
 
 void	parse_game_valid_make(t_game *game, char **converted_str)
 {
-	valid_make_texture(&game->texture, game->mlx, converted_str);
+	valid_make_texture(&game->img, game->mlx, converted_str);
 	valid_make_map(&game->map_info, converted_str);
 }
 
