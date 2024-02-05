@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_make_handling.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:16:36 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 14:33:14 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:36:13 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	texture_init(t_img *texture)
 {
-	texture->wall_south = NULL;
-	texture->wall_north = NULL;
-	texture->wall_east = NULL;
-	texture->wall_west = NULL;
+	int	direction;
+
+	direction = 0;
+	while (direction < 4)
+		texture->wall[direction] = NULL;
 	texture->floor_color = -1;
 	texture->ceiling_color = -1;
 }

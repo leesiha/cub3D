@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:01:21 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 11:55:15 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:36:54 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ typedef struct s_mlx
 
 typedef struct s_xpm_to_img
 {
-	void	*wall_north;
-	void	*wall_south;
-	void	*wall_east;
-	void	*wall_west;
+	void	*wall[4];
 	int		floor_color;
 	int		ceiling_color;
 	int		w;

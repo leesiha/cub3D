@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_texture_img_creat.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:08:35 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 11:53:17 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:36:51 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void	texture_img_creat(t_img *texture, void *mlx, char *img_str)
 	int	file_name;
 
 	file_name = file_name_find(img_str);
-	if (img_str[0] == 'S' && texture->wall_south == NULL)
-		texture->wall_south = mlx_xpm_file_to_image(mlx, img_str + file_name, \
+	if (img_str[0] == 'S' && texture->wall[2] == NULL)
+		texture->wall[2] = mlx_xpm_file_to_image(mlx, img_str + file_name, \
 													&texture->w, &texture->h);
-	else if (img_str[0] == 'N' && texture->wall_north == NULL)
-		texture->wall_north = mlx_xpm_file_to_image(mlx, img_str + file_name, \
+	else if (img_str[0] == 'N' && texture->wall[3] == NULL)
+		texture->wall[3] = mlx_xpm_file_to_image(mlx, img_str + file_name, \
 													&texture->w, &texture->h);
-	else if (img_str[0] == 'E' && texture->wall_east == NULL)
-		texture->wall_east = mlx_xpm_file_to_image(mlx, img_str + file_name, \
+	else if (img_str[0] == 'E' && texture->wall[0] == NULL)
+		texture->wall[0] = mlx_xpm_file_to_image(mlx, img_str + file_name, \
 													&texture->w, &texture->h);
-	else if (img_str[0] == 'W' && texture->wall_west == NULL)
-		texture->wall_west = mlx_xpm_file_to_image(mlx, img_str + file_name, \
+	else if (img_str[0] == 'W' && texture->wall[1] == NULL)
+		texture->wall[1] = mlx_xpm_file_to_image(mlx, img_str + file_name, \
 													&texture->w, &texture->h);
 }
