@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/31 20:59:09 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 21:26:26 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@
 //이미지의 정보를 나타내는 변수를 저장한 구조체
 typedef struct s_data
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
+	void			*img;
+	unsigned int	*addr;
+	int				bits_per_pixel;
+	int				size_line;
+	int				endian;
 }	t_data;
 
 typedef struct s_player
@@ -69,18 +69,22 @@ typedef struct s_dda
 
 typedef struct wall
 {
-	int	wall_height;
-	int	draw_start;
-	int	draw_end;
-	int	color;
+	double		perp_wall_dist;
+	double		wall_height;
+	double	wall_x;
+	int		texture_x;
+	double	step;
+	double	texture_pos;
+	int		texture_y;
+	int		draw_start;
+	int		draw_end;
+	int		color;
 }	t_wall;
 
 int		create_trgb(int t, int r, int g, int b);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 void	rotate(t_player *player, double theta);
 void	move_updown(t_player *player, char **map, double delta);
 void	move_leftright(t_player *player, char **map, double delta);
-void	set_wall_color(t_player *p, t_dda *d, t_wall *w);
 
 #endif

@@ -6,23 +6,28 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:56:40 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/28 20:22:27 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 19:44:01 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	create_trgb(int t, int r, int g, int b)
+void	my_mlx_pixel_put(t_game *game)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
-}
+	int	x;
+	int	y;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->size_line + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	y = 0;
+	while (y < SCREEN_HEIGHT)
+	{
+		x = 0;
+		while (x < SCREEN_WIDTH)
+		{
+			game->drawing.addr[y * SCREEN_WIDTH + x] = game->buffer[y][x];
+			x++;
+		}
+		y++;
+	}
 }
 
 void	clean_window(t_game *game)
@@ -36,7 +41,7 @@ void	clean_window(t_game *game)
 		x = 0;
 		while (x < SCREEN_WIDTH)
 		{
-			my_mlx_pixel_put(&game->drawing, x, y, game->texture.ceiling_color);
+			game->buffer[y][x] = game->img.ceiling_color;
 			x++;
 		}
 		y++;
@@ -46,7 +51,7 @@ void	clean_window(t_game *game)
 		x = 0;
 		while (x < SCREEN_WIDTH)
 		{
-			my_mlx_pixel_put(&game->drawing, x, y, game->texture.floor_color);
+			game->buffer[y][x] = game->img.floor_color;
 			x++;
 		}
 		y++;

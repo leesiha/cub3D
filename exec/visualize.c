@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visualize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:51:00 by sihlee            #+#    #+#             */
-/*   Updated: 2024/01/30 23:42:21 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 20:08:29 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,65 @@ void	init_player(t_game *game)
 {
 	game->player.pos_x = game->map_info.p_x + 0.5;
 	game->player.pos_y = game->map_info.p_y + 0.5;
-	game->player.cardinal_points = game->map_info.map[game->map_info.p_y][game->map_info.p_x];
+	game->player.cardinal_points = \
+		game->map_info.map[game->map_info.p_y][game->map_info.p_x];
 	game->player.dir_xv = 0;
 	game->player.dir_yv = 1;
 	game->player.plane_xv = 0.66;
 	game->player.plane_yv = 0;
 }
 
+void	get_img_data(t_game *game, int direction)
+{
+	int	width;
+	int	x;
+	int	height;
+	int	y;
+
+	width = game->img.w;
+	height = game->img.h;
+	y = 0;
+	while (y < height)
+	{
+		x = 0;
+		while (x < width)
+		{
+			game->texture[direction][width * y + x] = \
+				game->drawing.addr[width * y + x];
+			x++;
+		}
+		y++;
+	}
+}
+
 void	init_draw(t_game *game)
 {
 	t_data	*ptr;
+	int		direction;
 
 	ptr = &(game->drawing);
+	direction = 0;
+	while (direction < 4)
+	{
+		ptr->img = game->img.wall[direction];
+		ptr->addr = (unsigned int *)mlx_get_data_addr(ptr->img, \
+			&ptr->bits_per_pixel, &ptr->size_line, &ptr->endian);
+		get_img_data(game, direction);
+		direction++;
+		// mlx_destroy_image(game->mlx.mlx_p, ptr->img);
+	}
 	ptr->img = mlx_new_image(game->mlx.mlx_p, SCREEN_WIDTH, SCREEN_HEIGHT);
-	ptr->addr = mlx_get_data_addr(ptr->img, &ptr->bits_per_pixel, &ptr->size_line, &ptr->endian);
+	ptr->addr = (unsigned int *)mlx_get_data_addr(ptr->img, \
+			&ptr->bits_per_pixel, &ptr->size_line, &ptr->endian);
 }
 
 int	render_map(t_game *game)
 {
 	clean_window(game);
 	raycast(game);
-	mlx_put_image_to_window(game->mlx.mlx_p, game->mlx.win_p, game->drawing.img, 0, 0);
+	my_mlx_pixel_put(game);
+	mlx_put_image_to_window(game->mlx.mlx_p, game->mlx.win_p, \
+								game->drawing.img, 0, 0);
 	return (0);
 }
 
