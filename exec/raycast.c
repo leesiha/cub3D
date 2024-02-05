@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:56:53 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/05 21:24:31 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 22:33:56 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ void	get_wall_info(t_player *p, t_dda *d, t_wall *w)
 	else
 		w->wall_x = p->pos_x + w->perp_wall_dist * d->ray_xv;
 	w->wall_x -= floor(w->wall_x);
-	w->texture_x = (int)(w->wall_x * (double)TEXTURE_WIDTH);
+	w->texture_x = (int)(w->wall_x * (double)TEXTURE_W);
 	if (d->side == 0 && d->ray_xv > 0)
-		w->texture_x = TEXTURE_WIDTH - w->texture_x - 1;
+		w->texture_x = TEXTURE_W - w->texture_x - 1;
 	if (d->side == 1 && d->ray_yv < 0)
-		w->texture_x = TEXTURE_WIDTH - w->texture_x - 1;
-	w->step = 1.0 * TEXTURE_HEIGHT / w->wall_height;
+		w->texture_x = TEXTURE_W - w->texture_x - 1;
+	w->step = 1.0 * TEXTURE_H / w->wall_height;
 	w->texture_pos = (w->draw_start - H / 2 + w->wall_height / 2) * w->step;
 }
 
@@ -111,16 +111,15 @@ void	raycast(t_game *game)
 	int			y;
 
 	x = 0;
-	while (x < SCREEN_WIDTH)
+	while (x < SCREEN_W)
 	{
-		dda.plane_x = 2 * x / (double)SCREEN_WIDTH - 1;
+		dda.plane_x = 2 * x / (double)SCREEN_W - 1;
 		init_dda(&game->player, &dda);
 		run_dda(game->map_info.map, &dda);
 		get_wall_info(&game->player, &dda, &wall);
 		y = wall.draw_start;
 		while (y < wall.draw_end)
 		{
-			// wall.texture_y = (int)wall.texture_pos & (TEXTURE_HEIGHT - 1);
 			wall.texture_y = (int)wall.texture_pos;
 			wall.texture_pos += wall.step;
 			set_wall_color(game, &dda, &wall);

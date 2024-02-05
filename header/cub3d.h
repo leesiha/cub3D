@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/05 19:52:12 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 22:33:25 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include "raycast.h"
 # include "parse.h"
 
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 480
-# define H SCREEN_HEIGHT
+# define SCREEN_W 640
+# define SCREEN_H 480
+# define H SCREEN_H
 
-# define TEXTURE_WIDTH 400
-# define TEXTURE_HEIGHT 400
+# define TEXTURE_W 400
+# define TEXTURE_H 400
 
 typedef struct s_game
 {
@@ -33,8 +33,8 @@ typedef struct s_game
 	t_img		img;
 	t_data		drawing;
 	t_player	player;
-	int			texture[4][TEXTURE_HEIGHT * TEXTURE_WIDTH];
-	int			buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
+	int			texture[4][TEXTURE_H * TEXTURE_W];
+	int			buffer[SCREEN_H][SCREEN_W];
 }	t_game;
 
 void	parse(t_game *game, char *full_name);

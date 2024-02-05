@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 19:50:43 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/05 20:19:22 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 22:32:42 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	set_color_north(t_game *g, t_dda *d, t_wall *w)
 	if (d->side == 0)
 	{
 		if (d->ray_xv < 0)
-			w->color = g->texture[1][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[1][TEXTURE_W * w->texture_y + w->texture_x];
 		else
-			w->color = g->texture[0][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[0][TEXTURE_W * w->texture_y + w->texture_x];
 	}
 	else
 	{
 		if (d->ray_yv > 0)
-			w->color = g->texture[3][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[3][TEXTURE_W * w->texture_y + w->texture_x];
 		else
-			w->color = g->texture[2][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[2][TEXTURE_W * w->texture_y + w->texture_x];
 	}
 }
 
@@ -35,16 +35,16 @@ void	set_color_south(t_game *g, t_dda *d, t_wall *w)
 	if (d->side == 0)
 	{
 		if (d->ray_xv < 0)
-			w->color = g->texture[0][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[0][TEXTURE_W * w->texture_y + w->texture_x];
 		else
-			w->color = g->texture[1][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[1][TEXTURE_W * w->texture_y + w->texture_x];
 	}
 	else
 	{
 		if (d->ray_yv > 0)
-			w->color = g->texture[2][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[2][TEXTURE_W * w->texture_y + w->texture_x];
 		else
-			w->color = g->texture[3][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[3][TEXTURE_W * w->texture_y + w->texture_x];
 	}
 }
 
@@ -53,16 +53,16 @@ void	set_color_west(t_game *g, t_dda *d, t_wall *w)
 	if (d->side == 0)
 	{
 		if (d->ray_xv < 0)
-			w->color = g->texture[3][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[3][TEXTURE_W * w->texture_y + w->texture_x];
 		else
-			w->color = g->texture[2][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[2][TEXTURE_W * w->texture_y + w->texture_x];
 	}
 	else
 	{
 		if (d->ray_yv > 0)
-			w->color = g->texture[1][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[1][TEXTURE_W * w->texture_y + w->texture_x];
 		else
-			w->color = g->texture[0][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[0][TEXTURE_W * w->texture_y + w->texture_x];
 	}
 }
 
@@ -71,16 +71,16 @@ void	set_color_east(t_game *g, t_dda *d, t_wall *w)
 	if (d->side == 0)
 	{
 		if (d->ray_xv < 0)
-			w->color = g->texture[2][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[2][TEXTURE_W * w->texture_y + w->texture_x];
 		else
-			w->color = g->texture[3][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[3][TEXTURE_W * w->texture_y + w->texture_x];
 	}
 	else
 	{
 		if (d->ray_yv > 0)
-			w->color = g->texture[0][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[0][TEXTURE_W * w->texture_y + w->texture_x];
 		else
-			w->color = g->texture[1][TEXTURE_WIDTH * w->texture_y + w->texture_x];
+			w->color = g->texture[1][TEXTURE_W * w->texture_y + w->texture_x];
 	}
 }
 

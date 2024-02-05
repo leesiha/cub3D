@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:56:40 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/05 19:44:01 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 22:33:18 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	my_mlx_pixel_put(t_game *game)
 	int	y;
 
 	y = 0;
-	while (y < SCREEN_HEIGHT)
+	while (y < SCREEN_H)
 	{
 		x = 0;
-		while (x < SCREEN_WIDTH)
+		while (x < SCREEN_W)
 		{
-			game->drawing.addr[y * SCREEN_WIDTH + x] = game->buffer[y][x];
+			game->drawing.addr[y * SCREEN_W + x] = game->buffer[y][x];
 			x++;
 		}
 		y++;
@@ -36,20 +36,20 @@ void	clean_window(t_game *game)
 	int	y;
 
 	y = 0;
-	while (y < SCREEN_HEIGHT / 2)
+	while (y < SCREEN_H / 2)
 	{
 		x = 0;
-		while (x < SCREEN_WIDTH)
+		while (x < SCREEN_W)
 		{
 			game->buffer[y][x] = game->img.ceiling_color;
 			x++;
 		}
 		y++;
 	}
-	while (y < SCREEN_HEIGHT)
+	while (y < SCREEN_H)
 	{
 		x = 0;
-		while (x < SCREEN_WIDTH)
+		while (x < SCREEN_W)
 		{
 			game->buffer[y][x] = game->img.floor_color;
 			x++;
