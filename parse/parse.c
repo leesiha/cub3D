@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:33:26 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/05 15:51:48 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 22:45:30 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	parse_mlx_init(t_game *game)
 	if (game->mlx.mlx_p == NULL)
 		error_exit("mlx_init failed");
 	game->mlx.win_p = \
-	mlx_new_window(game->mlx.mlx_p, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
+	mlx_new_window(game->mlx.mlx_p, SCREEN_W, SCREEN_H, "cub3D");
 	if (game->mlx.win_p == NULL)
 		error_exit("mlx_new_window failed");
 }
@@ -64,6 +64,7 @@ void	parse(t_game *game, char *full_name)
 	{
 		free(converted_str[idx]);
 		converted_str[idx] = NULL;
+		idx++; // 이거 넣는거 까먹으셨나요?
 	}
 	free(converted_str);
 	converted_str = NULL;

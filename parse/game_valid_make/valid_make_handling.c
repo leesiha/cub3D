@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:16:36 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/05 17:39:59 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 22:35:21 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,14 @@ void	valid_make_texture(t_img *texture, t_mlx mlx, char **converted_str)
 			!ft_strncmp(converted_str[row] + col, "NO ", 3) || \
 			!ft_strncmp(converted_str[row] + col, "WE ", 3) || \
 			!ft_strncmp(converted_str[row] + col, "EA ", 3))
-			texture_img_creat(texture, mlx.mlx_p, \
-							converted_str[row] + col);
+			texture_img_creat(texture, mlx.mlx_p, converted_str[row] + col);
 		if (!ft_strncmp(converted_str[row] + col, "F ", 2) || \
 			!ft_strncmp(converted_str[row] + col, "C ", 2))
 			texture_rgb_creat(texture, converted_str[row] + col);
 		row++;
 	}
-	// if (texture->wall_south == NULL || texture->wall_north == NULL || \
-	// 	texture->wall_west == NULL || texture->wall_east == NULL || \
-	// 	texture->floor_color == -1 || texture->ceiling_color == -1)
-	// 	error_exit("Invalid texture form");
+	if (texture->wall[0] == NULL || texture->wall[1] == NULL || \
+		texture->wall[2] == NULL || texture->wall[3] == NULL || \
+		texture->floor_color == -1 || texture->ceiling_color == -1)
+		error_exit("Invalid texture form");
 }
