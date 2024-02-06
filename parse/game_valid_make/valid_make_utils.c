@@ -6,7 +6,7 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 11:54:08 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/06 17:33:03 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/06 22:05:21 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	map_data_free(char **map_data)
 	{
 		free(map_data[idx]);
 		map_data[idx] = NULL;
+		idx++;
 	}
 	free(map_data);
 	map_data = NULL;

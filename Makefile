@@ -41,7 +41,7 @@ $(CUB3D): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES_HEADER) -c $^ -o $@ -g
+	$(CC) $(CFLAGS) $(INCLUDES_HEADER) -c $^ -o $@
 
 clean: pre_clean
 	$(RM) $(OBJS)
