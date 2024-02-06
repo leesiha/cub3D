@@ -6,7 +6,7 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:17:23 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 08:49:08 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:36:38 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,9 @@ void	rgb_valid_check(char *rgb_str, int idx, int cnt)
 		error_exit("Invalid rgb form");
 }
 
-int	rgb_find(char *rgb_str)
+int	rgb_find(char *rgb_str, int idx)
 {
-	int	idx;
-
-	idx = 0;
-	while (rgb_str[idx] != ' ')
+	while (rgb_str[idx] != ' ' && rgb_str[idx] != ',')
 		idx++;
 	while (rgb_str[idx] == ' ' || rgb_str[idx] == ',')
 		idx++;
@@ -88,11 +85,11 @@ void	texture_rgb_creat(t_img *texture, char *rgb_str)
 	int	blue;
 
 	rgb_valid_check(rgb_str, 1, 0);
-	rgb_num = rgb_find(rgb_str);
+	rgb_num = rgb_find(rgb_str, 0);
 	red = ft_atoi(rgb_str + rgb_num);
-	rgb_num = rgb_find(rgb_str + rgb_num);
+	rgb_num = rgb_find(rgb_str, rgb_num);
 	green = ft_atoi(rgb_str + rgb_num);
-	rgb_num = rgb_find(rgb_str + rgb_num);
+	rgb_num = rgb_find(rgb_str, rgb_num);
 	blue = ft_atoi(rgb_str + rgb_num);
 	if (rgb_str[0] == 'F' && texture->floor_color == -1)
 		texture->floor_color = color_make(red, green, blue);

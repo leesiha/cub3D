@@ -6,7 +6,7 @@
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:01:21 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/30 09:01:13 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:28:00 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ char	*th_strjoin(char *dst, char *src, int dst_len, int src_len)
 	return (comb);
 }
 
-char	*convert_file_to_str(int fd)
+char	*str_creat(int fd)
 {
-	char	*temp_str;
+	char	*str;
 	char	buf[11];
 	int		byte;
 
 	byte = 10;
-	temp_str = NULL;
+	str = NULL;
 	while (byte == 10)
 	{
 		byte = read(fd, buf, 10);
@@ -60,13 +60,49 @@ char	*convert_file_to_str(int fd)
 			close(fd);
 			error_exit("read failed");
 		}
-		temp_str = th_strjoin(temp_str, buf, ft_strlen(temp_str), byte);
-		if (temp_str == NULL)
+		str = th_strjoin(str, buf, ft_strlen(str), byte);
+		if (str == NULL)
 		{
 			close(fd);
 			error_exit("malloc failed");
 		}
 	}
 	close(fd);
-	return (temp_str);
+	return (str);
+}
+
+int	file_name_check(char *full_name)
+{
+	char	*file_name;
+	char	*extension_name;
+
+	if (ft_strlen(full_name) < 5)
+		return (END);
+	file_name = ft_strrchr(full_name, '/');
+	if (file_name == NULL)
+		file_name = full_name;
+	else
+		file_name++;
+	extension_name = ft_strrchr(file_name, '.');
+	if (extension_name == NULL)
+		extension_name = file_name;
+	if (file_name[1] == '.' || ft_strncmp(extension_name, ".cub", 4))
+		return (END);
+	return (NEXT);
+}
+
+char	*convert_file_to_str(char *full_name)
+{
+	char	*str;
+	int		fd;
+
+	if (file_name_check(full_name))
+		error_exit("invalid file_name");
+	fd = open(full_name, O_RDONLY);
+	if (fd < 0)
+		error_exit("open failed");
+	str = str_creat(fd);
+	if (str[0] == '\0')
+		error_exit("empty file");
+	return (str);
 }

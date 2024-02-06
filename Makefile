@@ -21,8 +21,7 @@ SRCS		= cub3d.c \
 				exec/visualize.c \
 				parse/parse.c \
 				parse/file_convert/ft_convert_file_to_str.c \
-				parse/file_convert/ft_convert_map_nl_check.c \
-				parse/file_convert/convert_utils.c \
+				parse/file_convert/ft_convert_str_to_map_data.c \
 				parse/game_valid_make/valid_make_handling.c \
 				parse/game_valid_make/valid_make_utils.c \
 				parse/game_valid_make/ft_texture_img_creat.c \

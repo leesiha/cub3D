@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_map_nl_check.c                          :+:      :+:    :+:   */
+/*   ft_convert_str_to_map_data.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:02:54 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/29 18:03:28 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:49:18 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	map_start_find(char *temp_str)
 	return (ERROR);
 }
 
-void	convert_map_nl_check(char *temp_str)
+void	map_nl_check(char *temp_str)
 {
 	int	idx;
 
@@ -54,4 +54,16 @@ void	convert_map_nl_check(char *temp_str)
 			error_exit("wrong char");
 		idx++;
 	}
+}
+
+char	**convert_str_to_map_data(char *str)
+{
+	char	**map_data;
+
+	map_nl_check(str);
+	map_data = ft_split(str, '\n');
+	free(str);
+	if (map_data == NULL)
+		error_exit("malloc failed");
+	return (map_data);
 }

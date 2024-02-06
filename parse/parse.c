@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:33:26 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/05 22:45:30 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 18:47:50 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,47 +25,26 @@ void	parse_mlx_init(t_game *game)
 
 char	**parse_file_convert(char *full_name)
 {
-	char	*temp_str;
-	char	**converted_str;
-	int		fd;
+	char	*str;
+	char	**map_data;
 
-	if (file_name_check(full_name))
-		error_exit("invalid file_name");
-	fd = open(full_name, O_RDONLY);
-	if (fd < 0)
-		error_exit("open failed");
-	temp_str = convert_file_to_str(fd);
-	if (temp_str[0] == '\0')
-		error_exit("empty file");
-	convert_map_nl_check(temp_str);
-	converted_str = ft_split(temp_str, '\n');
-	free(temp_str);
-	if (converted_str == NULL)
-		error_exit("malloc failed");
-	return (converted_str);
+	str = convert_file_to_str(full_name);
+	map_data = convert_str_to_map_data(str);
+	return (map_data);
 }
 
-void	parse_game_valid_make(t_game *game, char **converted_str)
+void	parse_game_valid_make(t_game *game, char **map_data)
 {
-	valid_make_texture(&game->img, game->mlx, converted_str);
-	valid_make_map(&game->map_info, converted_str);
+	valid_make_texture(&game->img, game->mlx, map_data);
+	valid_make_map(&game->map_info, map_data);
+	map_data_free(map_data);
 }
 
 void	parse(t_game *game, char *full_name)
 {
-	char	**converted_str;
-	int		idx;
+	char	**map_data;
 
-	idx = 0;
-	converted_str = parse_file_convert(full_name);
+	map_data = parse_file_convert(full_name);
 	parse_mlx_init(game);
-	parse_game_valid_make(game, converted_str);
-	while (converted_str[idx] != NULL)
-	{
-		free(converted_str[idx]);
-		converted_str[idx] = NULL;
-		idx++; // 이거 넣는거 까먹으셨나요?
-	}
-	free(converted_str);
-	converted_str = NULL;
+	parse_game_valid_make(game, map_data);
 }

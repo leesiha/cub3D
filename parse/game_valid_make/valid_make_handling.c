@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_make_handling.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:16:36 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/05 22:35:21 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 18:50:37 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	map_info_init(t_map *map_info)
 	map_info->map = NULL;
 }
 
-void	valid_make_map(t_map *map_info, char **converted_str)
+void	valid_make_map(t_map *map_info, char **map_data)
 {
 	map_info_init(map_info);
-	map_info_creat(map_info, converted_str);
+	map_info_creat(map_info, map_data);
 	map_valid_check(map_info);
 }
 
-void	valid_make_texture(t_img *texture, t_mlx mlx, char **converted_str)
+void	valid_make_texture(t_img *texture, t_mlx mlx, char **map_data)
 {
 	int	row;
 	int	col;
@@ -53,16 +53,16 @@ void	valid_make_texture(t_img *texture, t_mlx mlx, char **converted_str)
 	while (row < 6)
 	{
 		col = 0;
-		while (converted_str[row][col] == ' ')
+		while (map_data[row][col] == ' ')
 			col++;
-		if (!ft_strncmp(converted_str[row] + col, "SO ", 3) || \
-			!ft_strncmp(converted_str[row] + col, "NO ", 3) || \
-			!ft_strncmp(converted_str[row] + col, "WE ", 3) || \
-			!ft_strncmp(converted_str[row] + col, "EA ", 3))
-			texture_img_creat(texture, mlx.mlx_p, converted_str[row] + col);
-		if (!ft_strncmp(converted_str[row] + col, "F ", 2) || \
-			!ft_strncmp(converted_str[row] + col, "C ", 2))
-			texture_rgb_creat(texture, converted_str[row] + col);
+		if (!ft_strncmp(map_data[row] + col, "SO ", 3) || \
+			!ft_strncmp(map_data[row] + col, "NO ", 3) || \
+			!ft_strncmp(map_data[row] + col, "WE ", 3) || \
+			!ft_strncmp(map_data[row] + col, "EA ", 3))
+			texture_img_creat(texture, mlx.mlx_p, map_data[row] + col);
+		if (!ft_strncmp(map_data[row] + col, "F ", 2) || \
+			!ft_strncmp(map_data[row] + col, "C ", 2))
+			texture_rgb_creat(texture, map_data[row] + col);
 		row++;
 	}
 	if (texture->wall[0] == NULL || texture->wall[1] == NULL || \

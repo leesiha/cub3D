@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_info_creat.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:59:40 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/01/31 20:41:38 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 18:51:30 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	map_char_and_size_check(t_map *map_info, char **converted_str, \
+void	map_char_and_size_check(t_map *map_info, char **map_data, \
 								int row, int col)
 {
 	int	p_cnt;
 
 	p_cnt = 0;
-	while (converted_str[row] != NULL)
+	while (map_data[row] != NULL)
 	{
 		col = 0;
-		while (converted_str[row][col] != '\0')
+		while (map_data[row][col] != '\0')
 		{
-			if (ft_strchr("SNEW", converted_str[row][col]))
+			if (ft_strchr("SNEW", map_data[row][col]))
 				p_cnt++;
-			else if (!ft_strchr("10 ", converted_str[row][col]))
+			else if (!ft_strchr("10 ", map_data[row][col]))
 				error_exit("Invalid map char");
 			col++;
 		}
@@ -58,7 +58,7 @@ void	map_init(t_map *map_info)
 	map_info->map[idx] = NULL;
 }
 
-void	map_creat(t_map *map_info, char **converted_str, \
+void	map_creat(t_map *map_info, char **map_data, \
 				int str_row, int map_row)
 {
 	int	col;
@@ -66,14 +66,14 @@ void	map_creat(t_map *map_info, char **converted_str, \
 	while (map_row < map_info->map_h)
 	{
 		col = 0;
-		while (converted_str[str_row][col] != '\0')
+		while (map_data[str_row][col] != '\0')
 		{
-			if (ft_strchr("SNEW", converted_str[str_row][col]))
+			if (ft_strchr("SNEW", map_data[str_row][col]))
 			{
 				map_info->p_x = col;
 				map_info->p_y = map_row;
 			}
-			map_info->map[map_row][col] = converted_str[str_row][col];
+			map_info->map[map_row][col] = map_data[str_row][col];
 			col++;
 		}
 		while (col < map_info->map_w)
@@ -87,9 +87,9 @@ void	map_creat(t_map *map_info, char **converted_str, \
 	}
 }
 
-void	map_info_creat(t_map *map_info, char **converted_str)
+void	map_info_creat(t_map *map_info, char **map_data)
 {
-	map_char_and_size_check(map_info, converted_str, 6, 0);
+	map_char_and_size_check(map_info, map_data, 6, 0);
 	map_init(map_info);
-	map_creat(map_info, converted_str, 6, 0);
+	map_creat(map_info, map_data, 6, 0);
 }

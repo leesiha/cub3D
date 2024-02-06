@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cardinal_points.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 19:50:43 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/05 22:32:42 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 13:22:03 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ void	set_wall_color(t_game *g, t_dda *d, t_wall *w)
 		set_color_west(g, d, w);
 	else if (g->player.cardinal_points == 'E')
 		set_color_east(g, d, w);
-	if (d->side == 1)
-		w->color = w->color / 2;
+	// if (d->side == 1)
+	// 	w->color = w->color / 2;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:01:21 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/05 15:36:54 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 20:53:04 by taehkim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,23 @@ typedef struct s_map
 	int		p_y;
 }	t_map;
 
-char	*convert_file_to_str(int fd);
-void	convert_map_nl_check(char *temp_str);
-int		file_name_check(char *full_name);
+char	*convert_file_to_str(char *full_name);
+char	**convert_str_to_map_data(char *str);
 // file_convert
 
-void	valid_make_texture(t_img *texture, t_mlx mlx, char **converted_str);
-void	valid_make_map(t_map *map_info, char **converted_str);
+void	valid_make_texture(t_img *texture, t_mlx mlx, char **map_data);
+void	valid_make_map(t_map *map_info, char **map_data);
 // valid_make_handling
 
 int		color_make(int red, int green, int blue);
+void	map_data_free(char **map_data);
 // valid_make_utils
 
 void	texture_img_creat(t_img *texture, void *mlx, char *img_str);
 void	texture_rgb_creat(t_img *texture, char *rgb_str);
 // valid_make_texture
 
-void	map_info_creat(t_map *map_info, char **converted_str);
+void	map_info_creat(t_map *map_info, char **map_data);
 void	map_valid_check(t_map *map_info);
 // valid_make_map
 
