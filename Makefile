@@ -1,4 +1,5 @@
-NAME		= cub3d
+NAME		= cub3D
+NAME_BONUS	= cub3D_bonus
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
@@ -29,12 +30,34 @@ SRCS		= cub3d.c \
 				parse/game_valid_make/ft_map_info_creat.c \
 				parse/game_valid_make/ft_map_valid_check.c \
 
+SRCS_BONUS	= cub3d_bonus.c \
+				all_utils_bonus.c \
+				exec/cardinal_points_bonus.c \
+				exec/keyhook_bonus.c \
+				exec/mlx_utils_bonus.c \
+				exec/raycast_bonus.c \
+				exec/visualize_bonus.c \
+				parse/parse_bonus.c \
+				parse/file_convert/ft_convert_file_to_str_bonus.c \
+				parse/file_convert/ft_convert_str_to_map_data_bonus.c \
+				parse/game_valid_make/valid_make_handling_bonus.c \
+				parse/game_valid_make/valid_make_utils_bonus.c \
+				parse/game_valid_make/ft_texture_img_creat_bonus.c \
+				parse/game_valid_make/ft_texture_rgb_creat_bonus.c \
+				parse/game_valid_make/ft_map_info_creat_bonus.c \
+				parse/game_valid_make/ft_map_valid_check_bonus.c \
 
 OBJS        = $(SRCS:.c=.o)
+OBJS_BONUS  = $(SRCS_BONUS:.c=.o)
 
 all: pre_make $(NAME)
 
+bonus: pre_make $(NAME_BONUS)
+
 $(NAME): $(CUB3D)
+	$(CC) $(CFLAGS) $(LINKS_LIBRARY) -lmlx -framework OpenGL -framework AppKit $^ -o $@
+
+$(NAME_BONUS): $(CUB3D)
 	$(CC) $(CFLAGS) $(LINKS_LIBRARY) -lmlx -framework OpenGL -framework AppKit $^ -o $@
 
 $(CUB3D): $(OBJS)
@@ -49,6 +72,7 @@ clean: pre_clean
 
 fclean: clean pre_fclean
 	$(RM) $(NAME)
+	$(RM) $(NAME_BONUS)
 
 re: fclean all
 
