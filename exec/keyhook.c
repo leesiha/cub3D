@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:00:38 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/05 22:27:50 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 14:41:06 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,7 @@ void	move_leftright(t_player *player, char **map, double delta)
 int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == ESC)
-	{
-		mlx_destroy_window(game->mlx.mlx_p, game->mlx.win_p);
-		exit(0);
-	}
+		fin();
 	if (keycode == W)
 		move_updown(&game->player, game->map_info.map, MOVESPEED);
 	else if (keycode == S)

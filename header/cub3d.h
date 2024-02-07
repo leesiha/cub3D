@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/05 22:33:25 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 14:41:47 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 
 # define TEXTURE_W 400
 # define TEXTURE_H 400
+
+# define KEY_PRESS 2
+# define EXIT_BUTTON 17
 
 typedef struct s_game
 {
@@ -49,5 +52,6 @@ void	set_wall_color(t_game *g, t_dda *d, t_wall *w);
 int		key_hook(int keycode, t_game *game);
 
 void	error_exit(char *msg);
+int		fin(void);
 
 #endif

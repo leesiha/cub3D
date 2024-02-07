@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visualize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:51:00 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/06 21:58:59 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/07 14:38:49 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	visualize(t_game *game)
 	init_player(game);
 	init_draw(game);
 	render_map(game);
-	mlx_hook(game->mlx.win_p, 2, 0, key_hook, game);
+	mlx_hook(game->mlx.win_p, KEY_PRESS, 0, key_hook, game);
+	mlx_hook(game->mlx.win_p, EXIT_BUTTON, 0, fin, 0);
 	mlx_loop(game->mlx.mlx_p);
 }
