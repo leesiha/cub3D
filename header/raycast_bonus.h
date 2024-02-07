@@ -6,16 +6,15 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/07 15:40:37 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:53:05 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAYCAST_H
-# define RAYCAST_H
+#ifndef RAYCAST_BONUS_H
+# define RAYCAST_BONUS_H
 
 # include <stdio.h>
 # include <math.h>
-# include <mlx.h>
 
 # define W 13
 # define A 0
@@ -28,7 +27,6 @@
 # define MOVESPEED 0.1
 # define ROTSPEED 0.05
 
-//이미지의 정보를 나타내는 변수를 저장한 구조체
 typedef struct s_data
 {
 	void			*img;

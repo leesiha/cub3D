@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_make_utils copy.c                            :+:      :+:    :+:   */
+/*   valid_make_utils_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 11:54:08 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/07 15:38:46 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:49:51 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	color_make(int red, int green, int blue)
 {

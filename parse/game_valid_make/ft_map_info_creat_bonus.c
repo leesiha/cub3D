@@ -6,11 +6,11 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:59:40 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/07 15:38:51 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:49:51 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	map_char_and_size_check(t_map *map_info, char **map_data, \
 								int row, int col)

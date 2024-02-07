@@ -6,11 +6,11 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:02:54 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/07 15:38:52 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:49:51 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	map_start_find(char *temp_str)
 {

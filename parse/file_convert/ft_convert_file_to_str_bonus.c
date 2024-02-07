@@ -6,11 +6,11 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:01:21 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/07 15:38:53 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:49:51 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	th_free(char *str)
 {

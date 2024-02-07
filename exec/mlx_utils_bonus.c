@@ -6,11 +6,11 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:56:40 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/07 15:37:43 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:49:51 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	my_mlx_pixel_put(t_game *game)
 {

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   parse_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taehkim2 <taehkim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:01:21 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/06 20:53:04 by taehkim2         ###   ########.fr       */
+/*   Updated: 2024/02/07 15:51:42 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef PARSE_BONUS_H
+# define PARSE_BONUS_H
 
 # include <fcntl.h>
-# include "libft.h"
 
 # define END	1
 # define NEXT	0

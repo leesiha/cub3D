@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/05 22:42:37 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:53:08 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # define MOVESPEED 0.1
 # define ROTSPEED 0.05
 
-//이미지의 정보를 나타내는 변수를 저장한 구조체
 typedef struct s_data
 {
 	void			*img;

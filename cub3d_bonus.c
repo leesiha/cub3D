@@ -6,11 +6,11 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 17:00:17 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/07 15:38:59 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:47:01 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	main(int argc, char **argv)
 {
