@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/07 17:01:57 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/12 12:32:28 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define TEXTURE_H 400
 
 # define KEY_PRESS 2
-# define EXIT_BUTTON 17
+# define DESTROY_NOTIFY 17
 
 typedef struct s_game
 {
