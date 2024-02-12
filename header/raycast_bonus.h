@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/07 15:53:05 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/12 12:44:49 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_player
 	double	dir_yv;
 	double	plane_xv;
 	double	plane_yv;
+	int		curser_x;
 }	t_player;
 
 typedef struct s_dda

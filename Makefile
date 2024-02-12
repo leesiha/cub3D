@@ -35,6 +35,7 @@ SRCS_BONUS	= cub3d_bonus.c \
 				all_utils_bonus.c \
 				exec/cardinal_points_bonus.c \
 				exec/keyhook_bonus.c \
+				exec/cursor_hook_bonus.c \
 				exec/mlx_utils_bonus.c \
 				exec/raycast_bonus.c \
 				exec/visualize_bonus.c \

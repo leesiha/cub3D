@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:51:00 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/07 15:49:51 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/12 12:52:13 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_player(t_game *game)
 	game->player.dir_yv = 1;
 	game->player.plane_xv = 0.66;
 	game->player.plane_yv = 0;
+	game->player.curser_x = -1;
 }
 
 void	get_img_data(t_game *game, int direction)
@@ -82,7 +83,8 @@ void	visualize(t_game *game)
 	init_player(game);
 	init_draw(game);
 	render_map(game);
-	mlx_hook(game->mlx.win_p, KEY_PRESS, 0, key_hook, game);
-	mlx_hook(game->mlx.win_p, EXIT_BUTTON, 0, fin, 0);
+	mlx_hook(game->mlx.win_p, KEY_PRESS, 1L << 0, key_hook, game);
+	mlx_hook(game->mlx.win_p, DESTROY_NOTIFY, 1L << 5, fin, 0);
+	mlx_hook(game->mlx.win_p, MOTION_NOTIFY, 1L << 6, cursor_hook, game);
 	mlx_loop(game->mlx.mlx_p);
 }
