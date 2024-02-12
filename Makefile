@@ -12,6 +12,7 @@ LINKS_LIBRARY    = -L$(LIBFT_DIR) -lft
 
 LIBFT_DIR		 = ./libft
 CUB3D		 = cub3d.a
+CUB3D_BONUS	 = cub3d_bonus.a
 
 SRCS		= cub3d.c \
 				all_utils.c \
@@ -57,10 +58,13 @@ bonus: pre_make $(NAME_BONUS)
 $(NAME): $(CUB3D)
 	$(CC) $(CFLAGS) $(LINKS_LIBRARY) -lmlx -framework OpenGL -framework AppKit $^ -o $@
 
-$(NAME_BONUS): $(CUB3D)
+$(NAME_BONUS): $(CUB3D_BONUS)
 	$(CC) $(CFLAGS) $(LINKS_LIBRARY) -lmlx -framework OpenGL -framework AppKit $^ -o $@
 
 $(CUB3D): $(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
+
+$(CUB3D_BONUS): $(OBJS_BONUS)
 	$(AR) $(ARFLAGS) $@ $^
 
 %.o: %.c
@@ -68,7 +72,9 @@ $(CUB3D): $(OBJS)
 
 clean: pre_clean
 	$(RM) $(OBJS)
+	$(RM) $(OBJS_BONUS)
 	$(RM) $(CUB3D)
+	$(RM) $(CUB3D_BONUS)
 
 fclean: clean pre_fclean
 	$(RM) $(NAME)

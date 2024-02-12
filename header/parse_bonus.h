@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:01:21 by taehkim2          #+#    #+#             */
-/*   Updated: 2024/02/07 15:51:42 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/12 11:40:56 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PARSE_BONUS_H
 
 # include <fcntl.h>
+# include "libft.h"
 
 # define END	1
 # define NEXT	0

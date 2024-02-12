@@ -6,7 +6,7 @@
 /*   By: sihlee <sihlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:56:44 by sihlee            #+#    #+#             */
-/*   Updated: 2024/02/07 15:53:08 by sihlee           ###   ########.fr       */
+/*   Updated: 2024/02/12 11:42:20 by sihlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdio.h>
 # include <math.h>
-# include <mlx.h>
 
 # define W 13
 # define A 0
