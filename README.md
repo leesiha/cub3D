@@ -1,42 +1,98 @@
 # cub3D
 
- miniLibX를 사용한 RayCaster를 구현해보자
+## Overview
+Cub3D is a simple 3D game engine project inspired by Wolfenstein 3D, created using the MiniLibX graphics library. This project is part of the 42 curriculum and demonstrates fundamental concepts of 3D graphics rendering through raycasting.
 
-## 코드 작성 규칙
+## Features
+- Basic 3D rendering using raycasting
+- Textured walls and sprites
+- Player movement and rotation
+- Simple map parsing
 
-### 1. 모든 디렉토리 및 파일명은 명사형으로 작성한다.
-- 디렉토리명은 하위에 있는 모든 파일들을 설명할 수 있어야 한다.
-- 파일명은 내부에 작성된 모든 함수들을 설명할 수 있어야 한다.
-- 즉, 디렉토리는 사용 목적을, 파일명은 기능을 알 수 있도록 작성하면 된다.
+## Getting Started
+
+### Prerequisites
+- Make sure you have `gcc` and `make` installed.
+- MiniLibX library is required.
+
+### Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/leesiha/cub3D.git
+   cd cub3D
+   ```
+2. Compile the project:
+   ```sh
+   make
+   ```
+
+### Running the Project
+1. Execute the binary with a map file:
+   ```sh
+   ./cub3D maps/sample_map.cub
+   ```
+
+## Controls
+- `W`, `A`, `S`, `D`: Move the player
+- `Left Arrow`, `Right Arrow`: Rotate the player
+- `ESC`: Exit the game
+
+## Code Structure
+- `src/`: Source code files
+- `include/`: Header files
+- `maps/`: Sample map files
+- `textures/`: Texture files
+
+## Map File Format
+Maps are simple text files with the following elements:
+- `1`: Wall
+- `0`: Empty space
+- `W`: Player start position
+
+Example:
+```
+1111111
+1000001
+100W001
+1000001
+1111111
+```
+
+
+## Code Convention
+
+### 1. All directory and file names must be written in noun form.
+- Directory names should describe all the files they contain.
+- File names should describe all the functions written within them.
+- In other words, directory names should indicate the purpose of use, and file names should indicate functionality.
 ```
 pars/strlen.c
--> parsing에 쓰이며, str의 길이를 세는 기능을 가지고 있다.
+-> Used for parsing, with the functionality to count the length of a string.
 
 pars/strjoin.c
--> parsing에 쓰이며, 두 개의 문자열을 합쳐 1개로 만들어주는 기능을 가지고 있다.
+-> Used for parsing, with the functionality to join two strings into one.
 ```
 
-### 2. 하나의 파일 안에는, 해당 파일명과 같은 함수명이 반드시 1개 존재해야 한다.
-- 파일 안에는 최대 5개의 함수를 작성할 수 있다.
-- 1개의 함수는 1개의 기능만을 수행해야 하며, 함수명을 통해 기능을 파악할 수 있어야 한다.
+### 2. Each file must contain one function with the same name as the file.
+- A file can contain up to 5 functions.
+- Each function should perform a single task, and the function name should clearly indicate its purpose.
 
-### 3. 모든 변수들의 이름에는 명확한 목적이 담겨 있어야 한다.
-- i, j, k와 같이 의미 없는 변수명 보다는 idx, len, cnt 와 같이 해당 변수가 어떤 역할을 하고 있는지 잘 알아볼 수 있도록 적어야 한다.
+### 3. All variable names must have a clear purpose.
+- Instead of using meaningless variable names like i, j, k, use names like idx, len, cnt that clearly indicate the role of the variable.
 ```
-p_idx : p 문자열의 인덱스
-p_len : p 문자열의 길이
-p_cnt : p 문자의 개수
+p_idx : Index of the string p
+p_len : Length of the string p
+p_cnt : Count of the character p
 ```
 
-### 4. 파일을 1개 생성했다면, 의도대로 기능이 구현 되었는지 테스트를 진행해야 한다.
-- 테스트는 main 문을 만들어 진행한다.
-- 작성한 main 문은 지우지 않고 `//`로 주석처리한다. (테스트케이스를 기억하기 위함)
+### 4. After creating a file, you must test if it functions as intended.
+- Perform tests by writing a main function.
+- Do not delete the main function you wrote for testing; comment it out with `//` to remember the test cases.
 
-### 5. 구현을 끝낸 후 함께 코드를 합치는 과정을 진행한다.
-- 아래의 과정으로 프로젝트가 진행된다
+### 5. After finishing the implementation, proceed with integrating the code together.
+- The project proceeds with the following steps:
 ```
-step 1. 각자 구현해야할 파트 할당
-step 2. 함수 구현 및 리팩토링 진행
-step 3. 각자 구현한 함수들을 합친 후 정상적으로 작동하는지 확인
+step 1. Assign parts to be implemented individually
+step 2. Implement and refactor functions
+step 3. Combine the individually implemented functions and verify they work correctly
 ```
----
