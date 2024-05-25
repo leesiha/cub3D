@@ -7,10 +7,11 @@ RM			= rm -f
 AR			= ar
 ARFLAGS		= rcs
 
-INCLUDES_HEADER  = -I$(LIBFT_DIR) -I header
-LINKS_LIBRARY    = -L$(LIBFT_DIR) -lft
+INCLUDES_HEADER  = -I$(LIBFT_DIR) -I$(MLX_DIR) -I header
+LINKS_LIBRARY    = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 LIBFT_DIR		 = ./libft
+MLX_DIR			 = ./mlx
 CUB3D		 = cub3d.a
 CUB3D_BONUS	 = cub3d_bonus.a
 
@@ -57,10 +58,10 @@ all: pre_make $(NAME)
 bonus: pre_make $(NAME_BONUS)
 
 $(NAME): $(CUB3D)
-	$(CC) $(CFLAGS) $(LINKS_LIBRARY) -lmlx -framework OpenGL -framework AppKit $^ -o $@
+	$(CC) $(CFLAGS) $(LINKS_LIBRARY) $^ -o $@
 
 $(NAME_BONUS): $(CUB3D_BONUS)
-	$(CC) $(CFLAGS) $(LINKS_LIBRARY) -lmlx -framework OpenGL -framework AppKit $^ -o $@
+	$(CC) $(CFLAGS) $(LINKS_LIBRARY) $^ -o $@
 
 $(CUB3D): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
@@ -85,9 +86,12 @@ re: fclean all
 
 pre_make:
 	make -C $(LIBFT_DIR)
+	make -C $(MLX_DIR)
 
 pre_clean:
 	make clean -C $(LIBFT_DIR)
+	make clean -C $(MLX_DIR)
 
 pre_fclean:
 	make fclean -C $(LIBFT_DIR)
+	make clean -C $(MLX_DIR)

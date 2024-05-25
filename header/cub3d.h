@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include "raycast.h"
 # include "parse.h"
 
