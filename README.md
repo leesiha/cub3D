@@ -1,6 +1,8 @@
 # cub3D
 
 ## Overview
+<p align="center"><img src="https://github.com/leesiha/cub3D/assets/66323295/1eaef0e3-4cbe-43a4-a213-cfc0e57fbb09" width="70%"></p>
+
 Cub3D is a simple 3D game engine project inspired by Wolfenstein 3D, created using the MiniLibX graphics library. This project is part of the 42 curriculum and demonstrates fundamental concepts of 3D graphics rendering through raycasting.
 
 ## Features
@@ -29,7 +31,7 @@ Cub3D is a simple 3D game engine project inspired by Wolfenstein 3D, created usi
 ### Running the Project
 1. Execute the binary with a map file:
    ```sh
-   ./cub3D maps/sample_map.cub
+   ./cub3D maps/big.cub
    ```
 
 ## Controls
